@@ -1,0 +1,69 @@
+import { useTranslation } from 'react-i18next';
+import { Mail, Phone, MapPin, Globe, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+
+export const Footer = () => {
+    const { t } = useTranslation();
+
+    return (
+        <footer className="border-t border-[#00767a] py-12 px-6 font-sans font-normal text-[#2A2A2A]" style={{ backgroundColor: '#eaeaea' }}>
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+                {/* Logo and About */}
+                <div className="flex flex-col gap-6">
+                    <img src="/assets/images/logo.png" alt="Kelcom" className="h-10 w-auto object-contain self-start" />
+                    <p className="text-sm leading-relaxed">
+                        Kelcom, votre partenaire expert en objets publicitaires et communication par l'objet.
+                    </p>
+                </div>
+
+                {/* Contact Info */}
+                <div className="flex flex-col gap-4">
+                    <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.contact')}</h4>
+                    <div className="flex items-center gap-3 text-sm">
+                        <Mail size={18} className="text-[#00767a]" />
+                        <a href="mailto:recommandation@kelcom.fr" className="hover:underline">recommandation@kelcom.fr</a>
+                    </div>
+                    <div className="flex items-center gap-3 text-sm">
+                        <Phone size={18} className="text-[#00767a]" />
+                        <a href="tel:0240352180" className="hover:underline">02 40 35 21 80</a>
+                    </div>
+                    <div className="flex items-start gap-3 text-sm">
+                        <MapPin size={18} className="text-[#00767a] mt-1 flex-shrink-0" />
+                        <p>Bât, 1 Rue Eugène Varlin Les Dorides - Bât. 1, 44100 Nantes</p>
+                    </div>
+                </div>
+
+                {/* Links */}
+                <div className="flex flex-col gap-4">
+                    <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">Liens</h4>
+                    <a href="https://www.kelcom.fr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:underline">
+                        <Globe size={16} /> {t('footer.website')}
+                    </a>
+                    <a href="https://www.kelcom.fr/information-kelcom/information-legale" target="_blank" rel="noopener noreferrer" className="text-sm hover:underline">{t('footer.legal')}</a>
+                </div>
+
+                {/* Social Media */}
+                <div className="flex flex-col gap-4">
+                    <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.social')}</h4>
+                    <div className="flex gap-4">
+                        <a href="https://fr-fr.facebook.com/kelcom.fr" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
+                            <Facebook size={20} />
+                        </a>
+                        <a href="https://twitter.com/KelCom_Nantes" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
+                            <Twitter size={20} />
+                        </a>
+                        <a href="https://www.linkedin.com/company/kelcom-fr/?originalSubdomain=fr" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
+                            <Linkedin size={20} />
+                        </a>
+                        <a href="https://www.instagram.com/kelcom_group/" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
+                            <Instagram size={20} />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-black/5 text-center text-xs text-gray-500 font-normal">
+                {t('footer.rights')}
+            </div>
+        </footer>
+    );
+};
