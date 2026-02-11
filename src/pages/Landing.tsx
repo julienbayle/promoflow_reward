@@ -8,29 +8,38 @@ const Landing = () => {
     const { t } = useTranslation();
 
     return (
-        <div className="relative min-h-screen pt-24 pb-12 overflow-x-hidden">
+        <div className="relative min-h-screen pt-24 overflow-x-hidden">
 
             {/* 1. Hero Section */}
-            <section className="w-full mb-16">
+            <section className="w-full">
                 <div className="w-full p-[20px] flex flex-col items-center" style={{ backgroundColor: '#c6d6e9' }}>
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-5xl font-black text-[#cf0617] text-center mb-12 uppercase leading-tight max-w-4xl"
+                        transition={{ duration: 3, delay: 0.5 }}
+                        className="text-3xl font-black text-[#cf0617] text-center uppercase leading-tight max-w-4xl py-4"
                     >
                         {t('hero.title')}
                     </motion.h1>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 3, delay: 0.5 }}
+                        className="text-2xl font-black text-[#cf0617] text-center mb-12 leading-tight max-w-4xl"
+                    >
+                        {t('hero.subtitle')}
+                    </motion.h2>
 
                     <div className="flex flex-col lg:flex-row items-center justify-center gap-12 w-full max-w-7xl">
                         {/* Left CTA */}
                         <div className="order-2 lg:order-1 flex flex-col items-center">
-                            <Link to="/start" className="btn-blue">
+                            <Link to="/start" className="btn-cta">
                                 {t('hero.cta')}
                             </Link>
                         </div>
 
                         {/* Wheel (Center) */}
-                        <div className="relative w-[340px] h-[340px] md:w-[480px] md:h-[480px] flex-shrink-0 order-1 lg:order-2">
+                        <div className="relative w-[200px] h-[200px] md:w-[340px] md:h-[340px] flex-shrink-0 order-1 lg:order-2">
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
@@ -47,11 +56,11 @@ const Landing = () => {
                             >
                                 {/* Segments */}
                                 {[
-                                    { angle: 36, icon: Smartphone, label: 'rewardsPage.wheel.phone' },
-                                    { angle: 108, icon: Gamepad2, label: 'rewardsPage.wheel.ps5' },
-                                    { angle: 180, icon: Gift, label: 'rewardsPage.wheel.voucher' },
-                                    { angle: 252, icon: Plane, label: 'rewardsPage.wheel.trip' },
-                                    { angle: 324, icon: Award, label: 'rewardsPage.wheel.scooter' }
+                                    { angle: 36, icon: Gift, label: 'rewardsPage.wheel.gift1' },
+                                    { angle: 108, icon: Gift, label: 'rewardsPage.wheel.gift2' },
+                                    { angle: 180, icon: Gift, label: 'rewardsPage.wheel.gift3' },
+                                    { angle: 252, icon: Gift, label: 'rewardsPage.wheel.gift4' },
+                                    { angle: 324, icon: Gift, label: 'rewardsPage.wheel.gift5' }
                                 ].map((item, i) => (
                                     <div key={i} className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 origin-bottom flex flex-col items-center pt-8 md:pt-12" style={{ transform: `translateX(-50%) rotate(${item.angle}deg)` }}>
                                         <div className="flex flex-col items-center" style={{ transform: `rotate(-${item.angle}deg)` }}>
@@ -79,7 +88,7 @@ const Landing = () => {
 
                         {/* Right CTA */}
                         <div className="order-3 flex flex-col items-center">
-                            <Link to="/dashboard" className="btn-blue">
+                            <Link to="/dashboard" className="btn-cta">
                                 {t('hero.secondary')}
                             </Link>
                         </div>
@@ -122,9 +131,8 @@ const Landing = () => {
                         ))}
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-center gap-8">
+                    <div className="flex justify-center">
                         <Link to="/start" className="btn-cta">{t('hero.cta')}</Link>
-                        <Link to="/" className="btn-cta">{t('nav.back')}</Link>
                     </div>
                 </div>
             </section>
@@ -138,25 +146,25 @@ const Landing = () => {
                     <div className="grid md:grid-cols-3 gap-8 mb-16">
                         <div className="bg-white p-8 rounded-[2.5rem] shadow-lg border-b border-gray-100 text-center">
                             <div className="w-16 h-16 bg-kelcom-cta/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <CheckCircle className="text-kelcom-cta" size={32} />
+                                <Gift className="text-kelcom-cta" size={32} />
                             </div>
                             <span className="font-normal text-[#2A2A2A]">{t('rewards.discount')}</span>
                         </div>
                         <div className="bg-white p-8 rounded-[2.5rem] shadow-lg border-b border-gray-100 text-center">
                             <div className="w-16 h-16 bg-[#cf0617]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <CheckCircle className="text-[#cf0617]" size={32} />
+                                <Gift className="text-[#cf0617]" size={32} />
                             </div>
                             <span className="font-normal text-[#2A2A2A]">{t('rewards.donation')}</span>
                         </div>
                         <div className="bg-white p-8 rounded-[2.5rem] shadow-lg border-b border-gray-100 text-center">
                             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <CheckCircle className="text-gray-400" size={32} />
+                                <Gift className="text-gray-400" size={32} />
                             </div>
                             <span className="font-normal text-[#2A2A2A]">{t('rewards.cards')}</span>
                         </div>
                     </div>
 
-                    <div className="text-center mt-12 pb-12">
+                    <div className="text-center mt-12">
                         <Link to="/start" className="btn-cta">{t('hero.cta')}</Link>
                     </div>
                 </div>

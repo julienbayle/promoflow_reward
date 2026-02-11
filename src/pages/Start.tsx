@@ -38,90 +38,7 @@ const Start = () => {
                     </div>
                 </section>
 
-                {/* Grand Bloc horizontal pour Exemples et Avis */}
-                <section className="mb-20 w-full">
-                    <div className="flex flex-col lg:flex-row gap-8 w-full">
-                        {/* Block 1: Testimonials (Avis des clients) */}
-                        <div
-                            className="flex-1 rounded-[3rem] p-5"
-                            style={{
-                                backgroundColor: 'rgba(255, 255, 255, 0.75)',
-                                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.14)',
-                                border: '1px solid #EAEAEA'
-                            }}
-                        >
-                            <div className="space-y-8">
-                                <h2 className="text-3xl font-normal text-[#0070F6] uppercase tracking-tight text-center">
-                                    {t('start.testimonials.title')}
-                                </h2>
-                                <div className="grid grid-cols-1 gap-6">
-                                    {[1, 2, 3, 4].map((num) => (
-                                        <div key={num} className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-black/5 relative group hover:scale-[1.02] transition-transform">
-                                            <Quote size={24} className="absolute -top-3 -left-2 text-kelcom-red opacity-10 group-hover:opacity-30" />
-                                            <div className="flex gap-1 mb-4">
-                                                {[...Array(5)].map((_, i) => (
-                                                    <Star
-                                                        key={i}
-                                                        size={16}
-                                                        className={i < Number(t(`start.testimonials.t${num}.rating`) || 5) ? "text-yellow-400 fill-yellow-400" : "text-gray-200"}
-                                                    />
-                                                ))}
-                                            </div>
-                                            <p className="text-lg text-[#242424] font-normal leading-relaxed mb-6">
-                                                "{t(`start.testimonials.t${num}.text`)}"
-                                            </p>
-                                            <div className="flex items-center gap-3 justify-end">
-                                                <div className="w-8 h-[2px] bg-kelcom-cta/30"></div>
-                                                <span className="font-normal text-xs uppercase tracking-widest text-[#5B5B5B]">
-                                                    {t(`start.testimonials.t${num}.name`)}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Block 2: Examples of messages */}
-                        <div
-                            className="flex-1 rounded-[3rem] p-5"
-                            style={{
-                                backgroundColor: '#F4F4F4',
-                                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.14)',
-                                border: '1px solid #EAEAEA'
-                            }}
-                        >
-                            <div className="space-y-8">
-                                <h2 className="text-3xl font-normal text-[#0070F6] uppercase tracking-tight text-center">
-                                    {t('start.examples.title')}
-                                </h2>
-                                <div className="space-y-6">
-                                    {[1, 2, 3].map((num) => (
-                                        <motion.div
-                                            key={num}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            viewport={{ once: true }}
-                                            className="bg-white p-8 rounded-[2.5rem] border border-white shadow-lg shadow-black/2"
-                                        >
-                                            <div className="bg-kelcom-cta/10 inline-block px-4 py-1 rounded-full text-kelcom-cta text-[10px] font-normal uppercase tracking-widest mb-4">
-                                                Exemple {num}
-                                            </div>
-                                            <p className="text-sm font-normal text-[#5B5B5B] mb-3 uppercase tracking-tighter">
-                                                Objet: {t(`start.examples.ex${num}.subject`)}
-                                            </p>
-                                            <p className="text-lg text-[#242424] font-normal leading-relaxed">
-                                                "{t(`start.examples.ex${num}.body`)}"
-                                            </p>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Steps Section - MD architecture update */}
+                {/* Steps Section - MOVED UP (MD Line 148) */}
                 <section className="mb-24 px-4 relative">
                     <h2 className="text-4xl font-normal mb-20 text-center text-[#2A2A2A] uppercase tracking-tighter">
                         {t('start.process.title')}
@@ -170,12 +87,90 @@ const Start = () => {
                     </div>
                 </section>
 
-                {/* Final CTAs - MD Line 187 */}
-                <div className="flex flex-row gap-8 max-w-2xl mx-auto pb-12">
-                    <Link to="/" className="flex-1 h-16 bg-kelcom-cta text-white rounded-full flex items-center justify-center font-normal uppercase tracking-widest hover:bg-[#d6654e] hover:scale-105 active:scale-95 transition-all shadow-xl shadow-kelcom-cta/20">
-                        {t('nav.back')}
-                    </Link>
-                    <Link to="/rewards" className="flex-[2] h-16 bg-kelcom-cta text-white rounded-full flex items-center justify-center gap-4 font-normal uppercase tracking-widest hover:bg-[#d6654e] hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-kelcom-cta/40">
+                {/* Deux divs l'une en dessous de l'autre pour Avis et Exemples (MD Line 165) */}
+                <section className="mb-20 w-full space-y-10">
+                    {/* Block 1: Testimonials (Avis des clients) - MD Line 160 & 168 */}
+                    <div 
+                        className="w-full rounded-[3rem] p-5 backdrop-blur-xl"
+                        style={{ 
+                            backgroundColor: 'rgba(255, 255, 255, 0.75)', 
+                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.14)',
+                            border: '1px solid #EAEAEA'
+                        }}
+                    >
+                        <div className="max-w-5xl mx-auto py-8">
+                            <h2 className="text-3xl font-normal text-[#0070F6] uppercase tracking-tight text-center mb-12">
+                                {t('start.testimonials.title')}
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {[1, 2, 3, 4].map((num) => (
+                                    <div key={num} className="bg-[#FFF] p-8 rounded-[2.5rem] shadow-sm border border-black/5 relative group hover:scale-[1.02] transition-transform">
+                                        <Quote size={24} className="absolute -top-3 -left-2 text-kelcom-cta opacity-10 group-hover:opacity-30" />
+                                        <div className="flex gap-1 mb-4">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star
+                                                    key={i}
+                                                    size={16}
+                                                    className={i < Number(t(`start.testimonials.t${num}.rating`) || 5) ? "text-yellow-400 fill-yellow-400" : "text-gray-200"}
+                                                />
+                                            ))}
+                                        </div>
+                                        <p className="text-lg text-[#242424] font-normal leading-relaxed mb-6">
+                                            "{t(`start.testimonials.t${num}.text`)}"
+                                        </p>
+                                        <div className="flex items-center gap-3 justify-end">
+                                            <div className="w-8 h-[2px] bg-kelcom-cta/30"></div>
+                                            <span className="font-normal text-xs uppercase tracking-widest text-[#5B5B5B]">
+                                                {t(`start.testimonials.t${num}.name`)}
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Block 2: Examples of messages - MD Line 157 & 180 */}
+                    <div 
+                        className="w-full rounded-[3rem] p-5"
+                        style={{ 
+                            backgroundColor: '#F4F4F4',
+                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.14)',
+                            border: '1px solid #EAEAEA'
+                        }}
+                    >
+                        <div className="max-w-5xl mx-auto py-8 text-center lg:text-left">
+                            <h2 className="text-3xl font-normal text-[#0070F6] uppercase tracking-tight text-center mb-12">
+                                {t('start.examples.title')}
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                {[1, 2, 3].map((num) => (
+                                    <motion.div
+                                        key={num}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        className="bg-[#FFF] p-8 rounded-[2.5rem] border border-white shadow-sm text-left"
+                                    >
+                                        <div className="bg-kelcom-cta/10 inline-block px-4 py-1 rounded-full text-kelcom-cta text-[10px] font-normal uppercase tracking-widest mb-4">
+                                            Exemple {num}
+                                        </div>
+                                        <p className="text-sm font-normal text-[#5B5B5B] mb-3 uppercase tracking-tighter">
+                                            Objet: {t(`start.examples.ex${num}.subject`)}
+                                        </p>
+                                        <p className="text-lg text-[#242424] font-normal leading-relaxed">
+                                            "{t(`start.examples.ex${num}.body`)}"
+                                        </p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Final CTA - MD Line 186 */}
+                <div className="flex justify-center pb-12">
+                    <Link to="/rewards" className="h-16 bg-kelcom-cta text-white rounded-full flex items-center justify-center gap-4 px-12 font-normal uppercase tracking-widest hover:bg-[#d6654e] hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-kelcom-cta/40 min-w-[300px]">
                         {t('start.cta')} <ArrowRight size={24} />
                     </Link>
                 </div>

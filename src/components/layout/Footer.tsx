@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, MapPin, Globe, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Globe, Linkedin } from 'lucide-react';
 
 export const Footer = () => {
     const { t } = useTranslation();
@@ -45,24 +45,15 @@ export const Footer = () => {
                 <div className="flex flex-col gap-4">
                     <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.social')}</h4>
                     <div className="flex gap-4">
-                        <a href="https://fr-fr.facebook.com/kelcom.fr" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
-                            <Facebook size={20} />
-                        </a>
-                        <a href="https://twitter.com/KelCom_Nantes" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
-                            <Twitter size={20} />
-                        </a>
                         <a href="https://www.linkedin.com/company/kelcom-fr/?originalSubdomain=fr" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
                             <Linkedin size={20} />
-                        </a>
-                        <a href="https://www.instagram.com/kelcom_group/" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
-                            <Instagram size={20} />
                         </a>
                     </div>
                 </div>
             </div>
 
             <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-black/5 text-center text-xs text-gray-500 font-normal">
-                {t('footer.rights')}
+                {t('footer.rights') + " " + new Date().getFullYear()}
             </div>
         </footer>
     );

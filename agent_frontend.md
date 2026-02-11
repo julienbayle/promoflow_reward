@@ -31,11 +31,7 @@ faire un section pour selectionner la langue d'au moins 5 mangues les plus parl�
 A tout moment, le visiteur peut changer de langue en sélectionnant la langue dans le coin supérieur droit.
 
 
-
 mettre le logo de Kelcom se trouvant dans public /assets/images/logo.png  tout en haut de la page a gauche de la navbar.
-
-
-
 
 
  # Footer
@@ -58,7 +54,7 @@ CTA: background-Couleur : #EF7359, color: #FFF, border: none, height: 40px, fron
 
 
 ## TES TÂCHES (Création de pages) :
-aujouter une navbar Horizontal tout en haut de la page avec le logo de Kelcom et les liens vers les pages **landing**(Acceuil), **start**(Temoignage), **rewards**(Avantages), **dashboard**(Recompenses&suivie) et un bouton pour changer de langue a droite de la navbar, couleur de la navbar : #FFF, couleur des textes: #333, font-size: 18px, font-weight: 350, 
+aujouter une navbar Horizontal tout en haut de la page avec le logo de Kelcom et les liens vers les pages **landing**(Acceuil), **start**(Temoignage), **rewards**(Avantages), **dashboard**(suivre mes Recompenses) et un bouton pour changer de langue a droite de la navbar, couleur de la navbar : #FFF, couleur des textes: #333, font-size: 18px, font-weight: 350, 
 
 Langue proposer Anglais et Français
 
@@ -78,7 +74,6 @@ Sections et contenu :
    - Bouton secondaire : "Suivre mes recommandations" (lien vers la page **dashboard**)
 
 les 2 boutons CTA doivent être de couleur : #EF7359 et disposer def facon Horizontale l'un a coté de l'autre au deux extremité de la roue des cadeaux.
-
 
 
 mettre tous le contenu Heros dans un div avec un fond de couleur : #c6d6e9ff et un padding de 20px et un width de 100%.
@@ -102,17 +97,8 @@ mettre dans un div avec un fond de couleur : background: linear-gradient(90deg, 
      2. Kelcom : Prise de contact et qualification
      3. Choix de votre récompense
 
-    
-  
-
-
-
 
 Bouton CTA : "Je participe" (lien vers la page **start**)
-Bouton CTA : "Retour" (lien vers la page **landing**)
-
-
-
 
 
 5. Quelle récompense ? :
@@ -141,6 +127,17 @@ mettre dans un div avec un fond de couleur : background: linear-gradient(90deg, 
 
 Simplement faire un email à votre contact en lui partageant les bénéfices que vous avez trouver à travailler avec Kelcom pour vos besoins en mettant en copie "recommandation@kelcom.fr"
 
+
+
+A générer : les étapes
+- Email recommandes
+- Votre contact appelle Kelcom
+- Kelcom appelle votre contact au bout de 15 jours sans nouvelles
+- Kelcom qualifie le contact et le valide dans le programme de recommandation
+- Une fois le contact qualifiée, vous pourrez choisir votre récompense.
+ générer une image d'illustration(prompte generative ) pour chaque étape ajouter les images dans le div de couleur : #EF7359, et mettre les étapes dans un ordre chronologique avec des fleches pour indiquer le sens de lecture 
+
+
 A générer : 3 exemples de message a mettre dans un div avec un titre "Exemples de messages".
 
 A générer : 4 témoignages de client ayant recommandé des contacts
@@ -149,7 +146,7 @@ A generer : mettre dans un div Avis des clients ayant recommandé des contacts a
 Kelcom prendra contact et qualifiera ce contact si celui si ne nous contacte pas directement sous 15 jours suite au message.
 
 
-creer deux div différent l'une de l'autre. l'une pour les message et avis des lient et l'autre pour les exemples de messages padding de 20px et un width de 100%.
+creer deux div différent l'une en dessus de l'autre. l'une pour les message et avis des lient et l'autre pour les exemples de messages padding de 20px et un width de 100%.
 
 couleur des div : 
 backgroundOpacityMurky : rgba(255, 255, 255, 0.75),
@@ -169,22 +166,9 @@ backgroundOpacityMurky : rgba(255, 255, 255, 0.75),
  scrollThumb: #A1A1A1; 
 
 
-
-A générer : les étapes
-- Email recommandes
-- Votre contact appelle Kelcom
-- Kelcom appelle votre contact au bout de 15 jours sans nouvelles
-- Kelcom qualifie le contact et le valide dans le programme de recommandation
-- Une fois le contact qualifiée, vous pourrez choisir votre récompense.
- générer une image d'illustration(prompte generative ) pour chaque étape ajouter les images dans le div de couleur : #EF7359, et mettre les étapes dans un ordre chronologique avec des fleches pour indiquer le sens de lecture 
-
-
-
 CTA : Les récompenses (lien vers page **rewards**)
-Bouton CTA : "Retour" (lien vers la page **landing**)
 
-
-les 2 CTA doivent être de couleur : #EF7359 et disposer def facon Horizontale l'un a coté de l'autre.
+CTA doivent être de couleur : #EF7359 et disposer au centre de la page.
 
 ### Page **rewards**
 
@@ -211,13 +195,9 @@ Cette page détaille le programme de récompense
 **Tirage au sort :**
 Participation au tirage au sort de fin d'année pour vous et votre client disposition d'articles au choix en guise de premier cadeau.
 (explication à généré)
--ajouter les images se trouvant dans public/assets/images : box-bienvenue.png, box-cadeau.png, box-remise.png, box-tirage.png 
 
 **Boutons CTA :**
 - **CTA Principal :** "Mes recommandations" (lien vers page **dashboard**), fond `#EF7359`, texte blanc.
-- **CTA Secondaire :** "Retour" (lien vers la page **landing**), bordure `#EF7359`, texte `#EF7359`, fond blanc.
-
-Les 2 CTA doivent être disposés de façon horizontale l'un à côté de l'autre.
 
 ### Page **dashboard**
 
@@ -228,53 +208,44 @@ header :
 
 
 Formulaire :
-- Votre email
-- Email du contact recommandé
--bloc de texte pour le message
-- générer un espace pourmettre Kelcom en copie
-- CTA : "Envoyer"
-tout champ doit etre obligatoire et doit etre validé avant l'activation du bouton envoyer.
-
-une fois le formulaire envoyé le nouveau contact recommander doit apparaître dans la page **dashboard** plus precisemment dans le tableau des recommandations. afin que le contact recommander soit validé par Kelcom et que celui qui a recommandé puisse le suivre le statut de la recommandation.
-
-
-un contact ne peut etre recommander 2 fois. Si c'est un contact deja recommander, le formulaire doit afficher un message disant que le contact est deja recommander "Desolé ce contact est deja recommander, veuillez en choisir un autre". 
- et chaque apporteur d'affaire a droit a recommander 1 seul contact n'etant pas encore recommandé. 
-
-
-
-
-- Image principale (prompt de génération) : une roue repartie en 5 présentant des cadeaux. chaque section doit contenir un cadeau différent Exemple:une console ps5, un trotinette electrique, des bons d'achat, un voyage, un telephone.
-la roue des cadeau doit avoir un bouton au centre avec une icone de check et le texte "touner la roue"  et doit être de couleur : linear-gradient(90deg, #F4E8E5 0%, #EEF2EF 50%, #DCEDEA 100%); et une fois qu'on la touche elle doit tourner et s'arreter sur un cadeau au hasard.
-
-
-l'email doit être mocké avec un email de test et le formulaire doit être fonctionnel et doit appeler le backend pour obtenir le statut "validé" et activer le roue des cadeau sans ça la roue doit être grisé et non cliquable.
-
-
-Une fois la roue tournée et un cadeau obtenu, le formulaire doit disparaitre et il faut afficher le cadeau obtenu et un message de remerciement juste a coté de la roue des cadeau.
-
-cependant le cadeau ne doit pas être envoyé, il doit être stocké dans le backend et envoyé plus tard une fois que le contact recommandé devient un client. 
-
-
-
-
-Formulaire :
 mettre dans un div avec un fond de couleur : background: linear-gradient(90deg, #1F8083 0%, #198686 50%, #11C5A2 100%)
 
 - Votre email
 CTA : "Envoyer"
+- Email du contact recommandé
 
-l'email doit être demandé a nouveau, :A la validation du formulaire, appel au backend, qui retour le statut de suivi de cette recommandation. Affichage du statut et du cadeau obtenu si le statut est OK_TO_BE_REWARDED.
+
+le tableau de bord doit apparaitre apres remplissage du formulaire, et cela ne doit pas activer d'abord la roue des prix. la roue des prix doit s'activer lorsquon qu'on clique sur<< tourner la roue>> qui doit apparaitre dans la colonne des cadeaux.
+
+l'email doit être demandé :A la validation du formulaire, appel au backend, qui retour le statut de suivi de cette recommandation. Affichage du statut et du cadeau obtenu si le statut est OK_TO_BE_REWARDED.
+
+l'email doit être mocké avec un email de test et le formulaire doit être fonctionnel et doit appeler le backend pour obtenir le statut "validé".
+
+un contact ne peut etre recommander 2 fois. Si c'est un contact deja recommander, le formulaire doit afficher un message disant que le contact est deja recommander "Desolé ce contact est deja recommander, veuillez en choisir un autre". 
+ et chaque apporteur d'affaire a droit a recommander 1 seul contact n'etant pas encore recommandé. 
+
 
 un tableau avec des contact(prompt generatif et statut de suivi) avec les colonnes suivantes :
 - Email du contact recommandé
 - Statut
 - Date de la recommandation
 - Date de la dernière mise à jour
-- Telechargement de l'envoi du cadeau 
+- Telechargement de l'envoi du cadeau
+
+une fois recommandation est faite dans le tableau de bord, dans la colone Cadeau du tableau doit afficher "Tourner la roue" ce qui va activé la roue de la fortune. 
+Aprés avoir tourné la roue, le statut de la recommandation doit être mis à jour avec le cadeau obtenu.
 
 
-la colonne du telechargement doit contenir un bouton de telechargement qui doit appeler le backend pour telecharger le cadeau une foi le statut OK_REWARDED atteint
+une fois le formulaire envoyé le nouveau contact recommander doit apparaître dans la page **dashboard** plus precisemment dans le tableau des recommandations. afin que le contact recommander soit validé par Kelcom et que celui qui a recommandé puisse le suivre le statut de la recommandation.
+
+- Image principale (prompt de génération) : une roue repartie en 5 présentant des cadeaux. chaque section doit contenir un cadeau différent Exemple:une console ps5, un trotinette electrique, des bons d'achat, un voyage, un telephone.
+la roue des cadeau doit avoir un bouton au centre avec une icone de check et le texte "touner la roue"  et doit être de couleur : linear-gradient(90deg, #F4E8E5 0%, #EEF2EF 50%, #DCEDEA 100%); et une fois qu'on la touche elle doit tourner et s'arreter sur un cadeau au hasard.
+
+
+Une fois la roue tournée et un cadeau obtenu, le formulaire doit disparaitre et il faut afficher le cadeau obtenu et un message de remerciement juste a coté de la roue des cadeau.
+
+cependant le cadeau ne doit pas être envoyé, il doit être stocké dans le backend et envoyé plus tard une fois que le contact recommandé devient un client. 
+
 
 
 Les status possibles :
@@ -292,3 +263,11 @@ Le statut comprends :
 
  
 Bouton CTA : "Retour" (lien vers la page **landing**)
+
+
+
+
+
+
+
+

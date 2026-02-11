@@ -4,8 +4,8 @@ import { ChevronDown, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const languages = [
-    { code: 'fr', label: 'Français', flag: '🇫🇷' },
-    { code: 'en', label: 'English', flag: '🇬🇧' }
+    { code: 'fr', label: 'Français' },
+    { code: 'en', label: 'English' }
 ];
 
 export const LanguageSwitcher = () => {
@@ -36,9 +36,8 @@ export const LanguageSwitcher = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-navbar-text/10 shadow-sm hover:border-kelcom-cta/30 transition-all group"
             >
-                <div className="text-[10px] font-black text-navbar-text flex items-center gap-2">
-                    <span className="text-base leading-none">{currentLang.flag}</span>
-                    <span>{currentLang.code.toUpperCase()}</span>
+                <div className="text-[11px] font-black text-navbar-text flex items-center gap-2">
+                    <span className="uppercase">{currentLang.label}</span>
                 </div>
                 <ChevronDown size={12} className={`text-navbar-text/40 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
@@ -71,8 +70,9 @@ export const LanguageSwitcher = () => {
                                             }`}
                                     >
                                         <div className="flex items-center gap-2">
-                                            <span className="text-sm">{lang.flag}</span>
-                                            <span className="text-[11px] font-black uppercase">{lang.label}</span>
+                                            <div className="text-left">
+                                                <p className="font-black leading-tight uppercase text-[11px]">{lang.label}</p>
+                                            </div>
                                         </div>
                                         {currentLang.code === lang.code && <Check size={12} strokeWidth={3} />}
                                     </button>

@@ -9,7 +9,7 @@ import { Footer } from './components/layout/Footer';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#FEF9F7] text-[#242424] font-sans transition-colors duration-300 relative">
+      <div className="min-h-screen bg-background-main text-[#242424] font-sans transition-colors duration-300 relative">
         <div className="relative z-10">
           <Navbar />
           <main>

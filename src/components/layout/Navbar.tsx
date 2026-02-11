@@ -28,11 +28,11 @@ export const Navbar = () => {
     ];
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-white py-6'
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-1' : 'bg-white py-6'
             }`}>
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <Link to="/" className="relative z-50">
-                    <img src="/assets/images/logo.png" alt="Kelcom" className="h-10 md:h-12 w-auto object-contain" />
+                    <img src="/assets/images/logo.png" alt="Kelcom" className={`${scrolled ? 'h-8' : 'h-12'} w-auto object-contain`} />
                 </Link>
 
                 {/* Navigation Links and Switcher Group */}
@@ -43,7 +43,7 @@ export const Navbar = () => {
                             <Link
                                 key={link.href}
                                 to={link.href}
-                                className={`text-[18px] font-[350] uppercase tracking-wide transition-colors ${location.pathname === link.href ? 'text-kelcom-cta' : 'text-[#2A2A2A] hover:text-kelcom-cta'
+                                className={`${scrolled ? 'text-[12px]' : 'text-[14px]'} font-[350] uppercase tracking-wide transition-colors ${location.pathname === link.href ? 'text-kelcom-cta' : 'text-[#333] hover:text-kelcom-cta'
                                     }`}
                             >
                                 {t(link.label)}

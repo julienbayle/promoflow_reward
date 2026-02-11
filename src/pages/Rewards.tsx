@@ -1,17 +1,37 @@
+import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
     Star, Trophy, LayoutDashboard,
-    ArrowLeft,
     Smartphone, Gamepad2
 } from 'lucide-react';
 
 const ExplainerVideo = () => {
+    const { t, i18n } = useTranslation();
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            // Force video reload when src changes
+            videoRef.current.load();
+
+            const tracks = videoRef.current.textTracks;
+            for (let i = 0; i < tracks.length; i++) {
+                if (tracks[i].language === i18n.language) {
+                    tracks[i].mode = 'showing';
+                } else {
+                    tracks[i].mode = 'disabled';
+                }
+            }
+        }
+    }, [i18n.language]);
+
     return (
         <div className="w-full aspect-video bg-black rounded-[3rem] overflow-hidden relative shadow-2xl border-[6px] border-white/20">
             <video
-                src="/explainer.mp4"
+                ref={videoRef}
+                src={i18n.language === 'fr' ? "/explainer.mp4" : "/explainer_en.mp4"}
                 className="w-full h-full object-cover"
                 controls
                 autoPlay
@@ -19,17 +39,33 @@ const ExplainerVideo = () => {
                 loop
                 playsInline
             >
-                Votre navigateur ne supporte pas la lecture de vidéos.
+                <track
+                    src="/subtitles_fr.vtt"
+                    kind="subtitles"
+                    srcLang="fr"
+                    label="Français"
+                    default={i18n.language === 'fr'}
+                />
+                <track
+                    src="/subtitles_en.vtt"
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                    default={i18n.language !== 'fr'}
+                />
+                {t('rewardsPage.videoError')}
             </video>
 
             {/* "Video" Label */}
             <div className="absolute top-8 right-8 bg-kelcom-red text-white px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest flex items-center gap-2 pointer-events-none shadow-xl">
                 <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                Vidéo de présentation
+                {t('rewardsPage.videoLabel')}
             </div>
         </div>
     );
 };
+
+
 
 const Rewards = () => {
     const { t } = useTranslation();
@@ -138,70 +174,26 @@ const Rewards = () => {
                     </motion.div>
                 </div>
 
-                {/* Reward Images Gallery - MD Line 193 */}
-                <div className="mb-24">
-                    <div className="text-center mb-16">
-                        <span className="px-5 py-2 bg-kelcom-cta text-white rounded-full text-xs font-normal uppercase tracking-widest mb-6 inline-block shadow-lg">
-                            Premiers cadeaux immédiats
-                        </span>
-                        <h2 className="text-4xl font-normal text-[#1F2A44] uppercase tracking-tighter">Disposition d'articles au choix</h2>
-                    </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                        {[
-                            { img: 'box-bienvenue.png', label: 'Box Bienvenue' },
-                            { img: 'box-cadeau.png', label: 'Box Cadeau' },
-                            { img: 'box-remise.png', label: 'Box Remise' },
-                            { img: 'box-tirage.png', label: 'Box Tirage' }
-                        ].map((box, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: i * 0.1 }}
-                                className="p-6 rounded-[3rem] border border-gray-100 shadow-xl hover:translate-y-[-10px] transition-all duration-500 group"
-                                style={{ background: 'linear-gradient(135deg, #F4E8E5 0%, #EEF2EF 50%, #DCEDEA 100%)' }}
-                            >
-                                <div className="aspect-square bg-white rounded-[2.5rem] overflow-hidden mb-6 border border-black/5 shadow-inner">
-                                    <img
-                                        src={`/assets/images/${box.img}`}
-                                        alt={box.label}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                    />
-                                </div>
-                                <h3 className="font-normal text-sm uppercase tracking-tighter text-[#1F2A44] text-center group-hover:text-kelcom-cta transition-colors">
-                                    {box.label}
-                                </h3>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
+
 
                 {/* Video Explainer Section */}
                 <div className="mb-24">
                     <div className="text-center mb-12">
                         <span className="px-4 py-1.5 bg-gray-100 text-[#2A2A2A] rounded-full text-[10px] font-normal uppercase tracking-widest mb-4 inline-block">
-                            Processus complet
+                            {t('rewardsPage.videoSectionBadge')}
                         </span>
-                        <h2 className="text-3xl font-normal text-[#1F2A44] uppercase tracking-tighter">Comment ça se passe ?</h2>
+                        <h2 className="text-3xl font-normal text-[#1F2A44] uppercase tracking-tighter">{t('rewardsPage.videoSectionTitle')}</h2>
                     </div>
                     <div className="max-w-4xl mx-auto">
                         <ExplainerVideo />
                     </div>
                 </div>
 
-                {/* Final CTAs - MD Line 210 */}
-                <div className="flex flex-col md:flex-row items-center justify-center gap-8 max-w-2xl mx-auto pb-12">
-                    <Link
-                        to="/"
-                        className="w-full md:flex-1 h-16 bg-kelcom-cta text-white flex items-center justify-center gap-3 rounded-full font-normal uppercase tracking-widest shadow-xl hover:bg-[#d6654e] transition-all"
-                    >
-                        <ArrowLeft size={20} />
-                        {t('nav.back')}
-                    </Link>
+                {/* Final CTA - MD Line 210 */}
+                <div className="flex justify-center pb-12">
                     <Link
                         to="/dashboard"
-                        className="w-full md:flex-[2] h-16 bg-kelcom-cta text-white flex items-center justify-center gap-4 rounded-full font-normal uppercase tracking-widest shadow-2xl shadow-kelcom-cta/40 hover:bg-[#d6654e] hover:scale-[1.02] active:scale-95 transition-all"
+                        className="h-16 bg-kelcom-cta text-white flex items-center justify-center gap-4 rounded-full font-normal uppercase tracking-widest shadow-2xl shadow-kelcom-cta/40 hover:bg-[#d6654e] hover:scale-[1.02] active:scale-95 transition-all px-12 min-w-[320px]"
                     >
                         <LayoutDashboard size={20} />
                         {t('rewardsPage.ctaDashboard')}

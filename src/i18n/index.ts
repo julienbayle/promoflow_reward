@@ -6,10 +6,10 @@ const resources = {
     fr: {
         translation: {
             hero: {
-                title: "Votre implication, notre succès, soyez récompensé",
+                title: "Programme fidélité et recommandation",
+                subtitle: "Votre implication, notre succès, soyez récompensé",
                 cta: "Je participe",
-                secondary: "Suivre mes recommandations",
-                spin: "Tourner la roue"
+                secondary: "Suivre mes recommandations"
             },
             why: {
                 title: "Pourquoi nous recommander à votre réseau ?",
@@ -23,7 +23,7 @@ const resources = {
                 title: "Comment ça fonctionne",
                 step1: "Vous : Email de recommandation",
                 step2: "Kelcom : Prise de contact et qualification",
-                step3: "Choix de votre récompense"
+                step3: "Vous: Choix de votre récompense"
             },
             rewards: {
                 title: "Quelle récompense ?",
@@ -42,14 +42,14 @@ const resources = {
                 home: "Acceuil",
                 start: "Temoignage",
                 rewards: "Avantages",
-                dashboard: "Recommandations & suivie",
+                dashboard: "suivre mes Recompenses",
                 back: "Retour"
             },
             start: {
                 title: "Commencer à recommander",
                 instruction: {
                     title: "Comment faire ?",
-                    text: "Simplement faire un email à votre contact en lui partageant les bénéfices que vous avez trouver à travailler avec Kelcom pour vos besoins en mettre en copie \"recommandation@kelcom.fr\""
+                    text: "Simplement faire un email à votre contact en lui partageant les bénéfices que vous avez trouver à travailler avec Kelcom pour vos besoins en mettant en copie \"recommandation@kelcom.fr\""
                 },
                 examples: {
                     title: "Exemples de messages",
@@ -119,12 +119,16 @@ const resources = {
                     prizes: "Les lots de cette année incluent une trottinette électrique, une console PS5 et bien d'autres surprises !"
                 },
                 ctaDashboard: "Mes recommandations",
+                videoLabel: "Vidéo de présentation",
+                videoSectionTitle: "Comment ça se passe ?",
+                videoSectionBadge: "Processus complet",
+                videoError: "Votre navigateur ne supporte pas la lecture de vidéos.",
                 wheel: {
-                    ps5: "PS5",
-                    scooter: "Trotinette",
-                    voucher: "Bon d'achat",
-                    trip: "Voyage",
-                    phone: "Téléphone",
+                    gift1: "2% de remise",
+                    gitf2: "Bon achat 50€",
+                    gift3: "Bon achat 100€",
+                    gift4: "Bon achat 200€",
+                    gitf5: "Don association",
                     surprise: "Surprise !",
                     wonPrize: "Vous avez gagné : {{prize}}"
                 },
@@ -152,7 +156,7 @@ const resources = {
                 contact: "Contact",
                 address: "Adresse",
                 social: "Suivez-nous",
-                rights: "Tous droits réservés © Kelcom 2024"
+                rights: "Tous droits réservés © Kelcom"
             },
             dashboard: {
                 title: "Suivre mes recommandations",
@@ -178,7 +182,7 @@ const resources = {
                     title: "Statut de la recommandation",
                     UNKNOWN: "Désolé, nous n'avons pas trouvé de recommandation correspondant à ces emails.",
                     WAITING_FOR_CONTACT: "En attente : Nous attendons que votre contact nous sollicite suite à votre email (premiers 15 jours).",
-                    TO_BE_QUALIFED: "À contacter : L'équipe Kelcom va prochainement prendre contact avec votre recommandé au bout de 15 jours sans nouvelle.",
+                    TO_BE_QUALIFED: "À contacter : L'équipe Kelcom va prochainement prendre contact avec votre recommandé.",
                     FAILED_TO_CONTACT: "Échec de contact : Nous n'avons pas réussi à joindre votre contact pour le moment.",
                     IN_CONTACT: "En cours : Nous sommes en échange avec votre contact pour qualifier son besoin.",
                     FAILED: "Non qualifié : Cette recommandation n'a malheureusement pas pu aboutir.",
@@ -191,7 +195,8 @@ const resources = {
     en: {
         translation: {
             hero: {
-                title: "Your involvement, our success, be rewarded",
+                title: "Loyality Program",
+                subtitle: "Your involvement, our success, be rewarded",
                 cta: "I participate",
                 secondary: "Track my recommendations",
                 spin: "Spin the wheel"
@@ -208,7 +213,7 @@ const resources = {
                 title: "How it works",
                 step1: "You: Recommendation email",
                 step2: "Kelcom: Contact and qualification",
-                step3: "Choice of your reward"
+                step3: "You:Choice of your reward"
             },
             rewards: {
                 title: "What reward?",
@@ -304,12 +309,16 @@ const resources = {
                     prizes: "This year's prizes include an electric scooter, a PS5 console, and many other surprises!"
                 },
                 ctaDashboard: "My recommendations",
+                videoLabel: "Presentation Video",
+                videoSectionTitle: "How does it work?",
+                videoSectionBadge: "Complete process",
+                videoError: "Your browser does not support the video tag.",
                 wheel: {
-                    ps5: "PS5",
-                    scooter: "Scooter",
-                    voucher: "Voucher",
-                    trip: "Trip",
-                    phone: "Phone",
+                    gift1: "2% discount",
+                    gitf2: "50€ voucher",
+                    gift3: "100€ voucher",
+                    gift4: "200€ voucher",
+                    gitf5: "Association donation",
                     surprise: "Surprise!",
                     wonPrize: "You won: {{prize}}"
                 },
@@ -337,7 +346,7 @@ const resources = {
                 contact: "Contact",
                 address: "Address",
                 social: "Follow us",
-                rights: "All rights reserved © Kelcom 2024"
+                rights: "All rights reserved © Kelcom"
             },
             dashboard: {
                 title: "Track my recommendations",

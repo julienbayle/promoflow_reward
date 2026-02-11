@@ -4,11 +4,8 @@ import { Globe, ChevronDown, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const languages = [
-    { code: 'fr', label: 'Français', native: 'Français', flag: '🇫🇷' },
-    { code: 'en', label: 'English', native: 'English', flag: '🇬🇧' },
-    { code: 'es', label: 'Spanish', native: 'Español', flag: '🇪🇸' },
-    { code: 'de', label: 'German', native: 'Deutsch', flag: '🇩🇪' },
-    { code: 'it', label: 'Italian', native: 'Italiano', flag: '🇮🇹' }
+    { code: 'fr', label: 'Français', native: 'Français' },
+    { code: 'en', label: 'English', native: 'English' }
 ];
 
 export const LanguageSection = () => {
@@ -54,7 +51,6 @@ export const LanguageSection = () => {
                             className="w-full flex items-center justify-between p-6 bg-white rounded-3xl border-2 border-kelcom-cta/10 shadow-xl hover:border-kelcom-cta/30 transition-all group"
                         >
                             <div className="flex items-center gap-4">
-                                <span className="text-3xl">{currentLang.flag}</span>
                                 <div className="text-left">
                                     <p className="text-[10px] font-bold text-kelcom-cta uppercase tracking-widest leading-none mb-1">Current Language</p>
                                     <p className="text-xl font-black text-[#563d40]">{currentLang.native}</p>
@@ -81,10 +77,8 @@ export const LanguageSection = () => {
                                                 }`}
                                         >
                                             <div className="flex items-center gap-4">
-                                                <span className="text-2xl">{lang.flag}</span>
                                                 <div className="text-left">
                                                     <p className="font-black leading-tight">{lang.native}</p>
-                                                    <p className="text-[10px] uppercase font-bold opacity-50">{lang.label}</p>
                                                 </div>
                                             </div>
                                             {currentLang.code === lang.code && (
