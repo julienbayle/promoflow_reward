@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
     Loader2, AlertCircle, Download, ArrowLeft, Calendar,
     CheckCircle, Send, Gamepad2, Award, Gift, Plane, Smartphone,
-    LayoutDashboard, Trophy, Info, Clock, Sparkles
+    LayoutDashboard, Trophy, Clock, Sparkles
 } from 'lucide-react';
 
 interface Recommendation {
@@ -23,7 +23,7 @@ const Dashboard = () => {
     const { t } = useTranslation();
 
     // --- STATE ---
-    const [formUserEmail, setFormUserEmail] = useState('test@kelcom.fr');
+    const [formUserEmail, setFormUserEmail] = useState('');
     const [contactEmail, setContactEmail] = useState('');
     const [recommendations, setRecommendations] = useState<Recommendation[] | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -61,17 +61,31 @@ const Dashboard = () => {
 
         setTimeout(() => {
             const existing: Recommendation[] = JSON.parse(localStorage.getItem('kelcom_recommendations') || '[]');
+            const contactExists = existing.find(rec => rec.contactEmail === contactEmail);
 
-            if (existing.some(rec => rec.contactEmail === contactEmail)) {
-                setFormError("Desolé ce contact est deja recommander, veuillez en choisir un autre");
-                setIsSubmitting(false);
-                return;
+            if (contactExists) {
+                if (contactExists.userEmail === formUserEmail) {
+                    // Already recommended by this user - just show table
+                    const filtered = existing.filter(rec => rec.userEmail === formUserEmail);
+                    setRecommendations(filtered);
+                    setIsSubmitting(false);
+                    setIsSubmitted(true);
+                    return;
+                } else {
+                    setFormError("Désolé, ce contact est déjà recommandé par un autre parrain.");
+                    setIsSubmitting(false);
+                    return;
+                }
             }
 
             const userRecs = existing.filter(r => r.userEmail === formUserEmail);
             if (userRecs.length >= 1) {
-                setFormError("Desolé, chaque apporteur d'affaire a droit a recommander 1 seul contact n'etant pas encore recommandé.");
+                // User already has one recommendation, they should check that one
+                setFormError("Désolé, chaque apporteur d'affaire a droit à recommander 1 seul contact. Vous pouvez suivre votre recommandation ci-dessous.");
+                const filtered = existing.filter(rec => rec.userEmail === formUserEmail);
+                setRecommendations(filtered);
                 setIsSubmitting(false);
+                setIsSubmitted(true);
                 return;
             }
 
@@ -172,78 +186,54 @@ const Dashboard = () => {
         <div className="relative min-h-screen pt-24 pb-20 overflow-x-hidden bg-background-main">
             <div className="max-w-6xl mx-auto px-6 relative z-10">
 
-                {/* Consolidated Festive Header */}
+                {/* Festive Compact Header */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="flex flex-col items-center mb-16 relative px-10 py-24 self-center mx-auto w-full max-w-5xl rounded-[4rem] overflow-hidden shadow-sm"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col items-center mb-12 pt-12 relative"
                 >
-                    {/* Background Gift Image and Overlays */}
-                    <div className="absolute inset-0 z-0">
-                        <img
-                            src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&q=80&w=1200"
-                            className="w-full h-full object-cover opacity-15"
-                            alt="Festive gifts"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-b from-background-main/80 via-transparent to-background-main/80"></div>
-                    </div>
+                    {/* Floating Festive Layer */}
+                    <div className="absolute inset-0 pointer-events-none z-0 overflow-visible">
+                        {/* Emojis scattered around */}
+                        <div className="absolute -top-2 left-[10%] text-4xl animate-bounce" style={{ animationDuration: '3s' }}>🎁</div>
+                        <div className="absolute top-4 right-[12%] text-3xl animate-pulse" style={{ animationDuration: '2.5s' }}>🎉</div>
+                        <div className="absolute -bottom-4 left-[15%] text-2xl animate-pulse text-yellow-400">✨</div>
+                        <div className="absolute top-1/2 -right-4 text-4xl animate-bounce" style={{ animationDuration: '4s' }}>🎈</div>
+                        <div className="absolute -top-6 right-[30%] text-2xl animate-spin-slow">✨</div>
+                        <div className="absolute bottom-0 right-[20%] text-3xl animate-bounce" style={{ animationDuration: '3.5s' }}>🎁</div>
+                        <div className="absolute top-0 left-[30%] text-xl animate-pulse">🎊</div>
 
-                    {/* Festive Elements */}
-                    <div className="absolute inset-0 pointer-events-none z-10">
-                        <div className="absolute top-10 left-[15%] text-6xl animate-bounce">🎁</div>
-                        <div className="absolute top-16 right-[15%] text-5xl animate-pulse">🎉</div>
-                        <div className="absolute bottom-16 left-[20%] text-5xl animate-bounce" style={{ animationDelay: '0.4s' }}>✨</div>
-                        <div className="absolute bottom-10 right-[20%] text-6xl animate-pulse" style={{ animationDelay: '0.2s' }}>🎁</div>
-
-                        {/* Dense Festive Confetti */}
-                        {[...Array(40)].map((_, i) => (
+                        {/* Particle Confetti */}
+                        {[...Array(25)].map((_, i) => (
                             <div
                                 key={i}
-                                className="absolute w-2 h-2 rounded-sm rotate-45 opacity-40"
+                                className="absolute w-1.5 h-1.5 rounded-full opacity-30"
                                 style={{
                                     backgroundColor: i % 3 === 0 ? '#1F8083' : i % 3 === 1 ? '#EF7359' : '#11C5A2',
                                     top: `${Math.random() * 100}%`,
                                     left: `${Math.random() * 100}%`,
-                                    transform: `scale(${Math.random()}) rotate(${Math.random() * 360}deg)`
+                                    transform: `rotate(${Math.random() * 360}deg)`
                                 }}
                             />
                         ))}
                     </div>
 
-                    <div className="flex flex-col items-center relative z-20 w-full">
-                        <div className="relative">
-                            {/* The "Doublé Transparent" Header Effect */}
-                            <h2
-                                className="text-6xl md:text-[6.5rem] font-black text-transparent italic tracking-tighter text-center leading-none"
-                                style={{
-                                    WebkitTextStroke: '3px #1F8083',
-                                    WebkitBackgroundClip: 'text',
-                                    backgroundImage: 'linear-gradient(90deg, #1F8083 0%, #198686 50%, #11C5A2 100%)',
-                                    filter: 'drop-shadow(0 10px 20px rgba(31, 128, 131, 0.2))'
-                                }}
-                            >
-                                20 ANS D'EXISTENCE
-                            </h2>
-                            {/* The shadow layer for "doublé" effect */}
-                            <div
-                                className="absolute inset-0 translate-x-1.5 translate-y-1.5 opacity-40 select-none pointer-events-none text-6xl md:text-[6.5rem] font-black italic tracking-tighter text-center leading-none"
-                                style={{
-                                    WebkitTextStroke: '2px #1F8083',
-                                    color: 'transparent'
-                                }}
-                            >
-                                20 ANS D'EXISTENCE
-                            </div>
-                        </div>
+                    <div className="relative z-10 flex flex-col items-center">
+                        <h2
+                            className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text text-center uppercase tracking-tighter leading-tight mb-8"
+                            style={{ backgroundImage: 'linear-gradient(90deg, #1F8083 0%, #198686 50%, #11C5A2 100%)' }}
+                        >
+                            20 ANS D'EXISTENCE
+                        </h2>
 
-                        <div className="mt-12 flex items-center gap-5 text-[#1F2A44] font-black uppercase tracking-[0.4em] text-[15px] bg-white/70 backdrop-blur-xl px-12 py-5 rounded-full shadow-xl border border-white/40 ring-1 ring-black/5">
-                            <Sparkles size={20} className="animate-spin-slow text-kelcom-cta" />
+                        <div className="flex items-center gap-3 text-[#1F2A44] font-black uppercase tracking-[0.2em] text-[11px] md:text-[13px] bg-white/70 backdrop-blur-md px-8 py-3 rounded-full border border-white shadow-sm ring-1 ring-black/5">
+                            <Sparkles size={16} className="text-kelcom-cta animate-pulse" />
                             Partenariat & Réussite Kelcom
-                            <Sparkles size={20} className="animate-spin-slow text-kelcom-cta" />
+                            <Sparkles size={16} className="text-kelcom-cta animate-pulse" />
                         </div>
                     </div>
                 </motion.div>
-
 
                 {/* NEW RECOMMENDATION SECTION (Integrated Form & Wheel) */}
                 <section className="mb-20">
@@ -266,10 +256,10 @@ const Dashboard = () => {
                                     className="space-y-8"
                                 >
                                     <div className="space-y-3">
-                                        <h2 className="text-3xl md:text-4xl font-normal text-white uppercase tracking-tight leading-tight">
+                                        <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-tight">
                                             Recommander un contact
                                         </h2>
-                                        <p className="text-white/80 text-lg font-normal max-w-md leading-snug">
+                                        <p className="text-white/80 font-normal max-w-md">
                                             Participez à notre programme et débloquez immédiatement votre cadeau sur la roue.
                                         </p>
                                     </div>
@@ -337,14 +327,14 @@ const Dashboard = () => {
                             </AnimatePresence>
                         </div>
                     </motion.div>
-                </section>
+                </section >
 
                 {/* TRACKING SECTION - Table only, no search form */}
-                <section className="space-y-12">
+                < section className="space-y-12" >
 
 
                     <AnimatePresence mode="wait">
-                        {(isSubmitted || (recommendations && recommendations.length > 0)) && (
+                        {isSubmitted && (
                             <motion.div
                                 key="recommendations-results"
                                 initial={{ opacity: 0, y: 30 }}
@@ -353,7 +343,7 @@ const Dashboard = () => {
                                 className="bg-white rounded-[4rem] shadow-2xl border border-black/5 overflow-hidden"
                             >
                                 <div className="p-10 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
-                                    <h3 className="text-2xl font-normal text-[#2A2A2A] uppercase tracking-tight flex items-center gap-3">
+                                    <h3 className="text-2xl font-bold text-[#2A2A2A] uppercase tracking-tight flex items-center gap-3">
                                         <LayoutDashboard className="text-kelcom-cta" />
                                         Tableau de bord de parrainage
                                     </h3>
@@ -417,8 +407,9 @@ const Dashboard = () => {
                                                                         }
                                                                     }, 100);
                                                                 }}
-                                                                className="px-6 py-3 bg-kelcom-cta text-white rounded-full text-[10px] font-normal uppercase tracking-widest hover:scale-105 transition-all shadow-lg animate-bounce"
+                                                                className="px-6 py-3 bg-kelcom-cta text-white rounded-full text-[10px] font-normal uppercase tracking-widest hover:scale-105 transition-all shadow-lg animate-bounce flex items-center justify-center gap-2 mx-auto"
                                                             >
+                                                                <Gamepad2 size={14} />
                                                                 Tourner la roue
                                                             </button>
                                                         ) : rec.status === 'OK_REWARDED' ? (
@@ -458,132 +449,134 @@ const Dashboard = () => {
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </section>
+                </section >
 
                 {/* THE GIFT WHEEL SECTION (NOW BELOW) */}
-                {(isValidated || hasSpun) && (
-                    <section id="wheel-section" className="mb-24">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="w-full p-10 md:p-14 rounded-[4rem] shadow-2xl relative overflow-hidden text-white border border-white/10"
-                            style={{ background: 'linear-gradient(90deg, #1F8083 0%, #198686 50%, #11C5A2 100%)' }}
-                        >
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
+                {
+                    (isValidated || hasSpun) && (
+                        <section id="wheel-section" className="mb-24">
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="w-full p-10 md:p-14 rounded-[4rem] shadow-2xl relative overflow-hidden text-white border border-white/10"
+                                style={{ background: 'linear-gradient(90deg, #1F8083 0%, #198686 50%, #11C5A2 100%)' }}
+                            >
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl translate-x-1/2 -translate-y-1/2" />
 
-                            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
-                                {/* LEFT: SUCCESS MESSAGE OR WHEEL TITLE */}
-                                <div className="w-full lg:w-1/2">
-                                    <AnimatePresence mode="wait">
-                                        {hasSpun ? (
-                                            <motion.div
-                                                key="success-message"
-                                                initial={{ opacity: 0, x: -20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                className="space-y-8 flex flex-col items-center text-center lg:items-start lg:text-left"
-                                            >
-                                                <div className="p-6 bg-white/10 rounded-[2.5rem] shadow-xl border border-white/20 backdrop-blur-md">
-                                                    <Trophy size={64} className="text-white" />
-                                                </div>
-                                                <div className="space-y-4">
-                                                    <h2 className="text-5xl font-normal text-white uppercase tracking-tight leading-none">
-                                                        Bravo !
-                                                    </h2>
-                                                    <div className="bg-white px-10 py-6 rounded-[2.5rem] border border-gray-100 inline-block shadow-2xl transform hover:scale-105 transition-transform cursor-default">
-                                                        <p className="text-[#2A2A2A]/40 text-[10px] font-normal uppercase tracking-[0.3em] mb-2 text-center">Vous avez remporté :</p>
-                                                        <p className="text-4xl md:text-5xl font-normal text-[#1F2A44] uppercase text-center flex items-center gap-4">
-                                                            🎁 {wonPrize}
-                                                        </p>
+                                <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+                                    {/* LEFT: SUCCESS MESSAGE OR WHEEL TITLE */}
+                                    <div className="w-full lg:w-1/2">
+                                        <AnimatePresence mode="wait">
+                                            {hasSpun ? (
+                                                <motion.div
+                                                    key="success-message"
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    className="space-y-8 flex flex-col items-center text-center lg:items-start lg:text-left"
+                                                >
+                                                    <div className="p-6 bg-white/10 rounded-[2.5rem] shadow-xl border border-white/20 backdrop-blur-md">
+                                                        <Trophy size={64} className="text-white" />
                                                     </div>
-                                                </div>
-                                                <p className="text-white/90 text-xl font-normal leading-relaxed max-w-md">
-                                                    Toute l'équipe Kelcom vous remercie ! Votre cadeau a bien été enregistré et vous sera envoyé dès que votre contact recommandé passera sa première commande.
-                                                </p>
-                                            </motion.div>
-                                        ) : (
-                                            <motion.div
-                                                key="wheel-intro"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                className="space-y-6 flex flex-col items-center text-center lg:items-start lg:text-left"
-                                            >
-                                                <div className="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center backdrop-blur-md border border-white/20">
-                                                    <Gamepad2 size={40} />
-                                                </div>
-                                                <h2 className="text-4xl font-normal text-white uppercase tracking-tight leading-tight">
-                                                    Tournez la roue des cadeaux !
-                                                </h2>
-                                                <p className="text-white/80 text-xl font-normal max-w-md">
-                                                    Vous avez débloqué un tour de roue. Cliquez sur le bouton central pour découvrir votre récompense.
-                                                </p>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-
-                                {/* RIGHT: THE WHEEL */}
-                                <div className="w-full lg:w-1/2 flex justify-center perspective-1000">
-                                    <div className="relative w-full max-w-[500px] aspect-square transition-all duration-1000 scale-100 drop-shadow-[0_45px_65px_rgba(0,0,0,0.5)]">
-                                        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[25%] w-16 h-24 bg-[#cf0617] z-30 shadow-2xl"
-                                            style={{ clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)' }} />
-
-                                        <motion.div
-                                            animate={{ rotate: rotation }}
-                                            transition={{ duration: 4, ease: [0.22, 1, 0.36, 1] }}
-                                            className="relative w-full h-full rounded-full border-[18px] border-white shadow-[0_0_80px_rgba(255,255,255,0.3)] overflow-hidden"
-                                        >
-                                            <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#F4E8E5_0deg_72deg,#EEF2EF_72deg_144deg,#DCEDEA_144deg_216deg,#F4E8E5_216deg_288deg,#EEF2EF_288deg_360deg)]" />
-
-                                            <div className="absolute inset-0">
-                                                {prizes.map((p, i) => (
-                                                    <div
-                                                        key={i}
-                                                        className="absolute inset-0 flex items-start justify-center pt-12"
-                                                        style={{ transform: `rotate(${p.Angle}deg)` }}
-                                                    >
-                                                        <div className="flex flex-col items-center gap-2" style={{ transform: `rotate(-${p.Angle}deg)` }}>
-                                                            <div className="p-4 bg-white/50 backdrop-blur-md rounded-full shadow-lg ring-2 ring-white/10">
-                                                                <p.Icon size={32} className="text-[#00767a] drop-shadow-sm" />
-                                                            </div>
-                                                            <span className="text-[11px] font-black text-[#00767a] uppercase tracking-tighter drop-shadow-sm text-center max-w-[90px] leading-tight">
-                                                                {p.Label}
-                                                            </span>
+                                                    <div className="space-y-4">
+                                                        <h2 className="text-5xl font-bold text-white uppercase tracking-tight leading-none">
+                                                            Bravo !
+                                                        </h2>
+                                                        <div className="bg-white px-10 py-6 rounded-[2.5rem] border border-gray-100 inline-block shadow-2xl transform hover:scale-105 transition-transform cursor-default">
+                                                            <p className="text-[#2A2A2A]/40 text-[10px] font-normal uppercase tracking-[0.3em] mb-2 text-center">Vous avez remporté :</p>
+                                                            <p className="text-4xl md:text-5xl font-bold text-[#1F2A44] uppercase text-center flex items-center gap-4">
+                                                                🎁 {wonPrize}
+                                                            </p>
                                                         </div>
                                                     </div>
-                                                ))}
-                                            </div>
-                                        </motion.div>
-
-                                        <button
-                                            onClick={spinWheel}
-                                            disabled={isSpinning || hasSpun}
-                                            className={`absolute w-44 h-44 rounded-full border-[10px] border-white shadow-[0_40px_80px_rgba(0,0,0,0.6)] z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-[#00767a] transition-all transform hover:scale-110 active:scale-90 ${hasSpun ? 'bg-green-500 text-white' : 'hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]'} group`}
-                                            style={{
-                                                background: hasSpun ? '#22c55e' : 'linear-gradient(90deg, #F4E8E5 0%, #EEF2EF 50%, #DCEDEA 100%)'
-                                            }}
-                                        >
-                                            {hasSpun ? (
-                                                <div className="flex flex-col items-center">
-                                                    <CheckCircle size={64} className="mb-2" />
-                                                    <span className="text-[10px] font-normal uppercase tracking-widest">Gagné !</span>
-                                                </div>
+                                                    <p className="text-white/90 font-normal max-w-md">
+                                                        Toute l'équipe Kelcom vous remercie ! Votre cadeau a bien été enregistré et vous sera envoyé dès que votre contact recommandé passera sa première commande.
+                                                    </p>
+                                                </motion.div>
                                             ) : (
-                                                <>
-                                                    <div className="p-4 bg-gray-50 rounded-full mb-2 group-hover:scale-110 transition-transform">
-                                                        <CheckCircle size={36} />
+                                                <motion.div
+                                                    key="wheel-intro"
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    className="space-y-6 flex flex-col items-center text-center lg:items-start lg:text-left"
+                                                >
+                                                    <div className="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center backdrop-blur-md border border-white/20">
+                                                        <Gamepad2 size={40} />
                                                     </div>
-                                                    <span className="text-[14px] font-normal uppercase tracking-tighter text-center leading-tight">
-                                                        touner<br />la roue
-                                                    </span>
-                                                </>
+                                                    <h2 className="text-4xl font-bold text-white uppercase tracking-tight leading-tight">
+                                                        Tournez la roue des cadeaux !
+                                                    </h2>
+                                                    <p className="text-white/80 font-normal max-w-md">
+                                                        Vous avez débloqué un tour de roue. Cliquez sur le bouton central pour découvrir votre récompense.
+                                                    </p>
+                                                </motion.div>
                                             )}
-                                        </button>
+                                        </AnimatePresence>
+                                    </div>
+
+                                    {/* RIGHT: THE WHEEL */}
+                                    <div className="w-full lg:w-1/2 flex justify-center perspective-1000">
+                                        <div className="relative w-full max-w-[500px] aspect-square transition-all duration-1000 scale-100 drop-shadow-[0_45px_65px_rgba(0,0,0,0.5)]">
+                                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[25%] w-16 h-24 bg-[#cf0617] z-30 shadow-2xl"
+                                                style={{ clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)' }} />
+
+                                            <motion.div
+                                                animate={{ rotate: rotation }}
+                                                transition={{ duration: 4, ease: [0.22, 1, 0.36, 1] }}
+                                                className="relative w-full h-full rounded-full border-[18px] border-white shadow-[0_0_80px_rgba(255,255,255,0.3)] overflow-hidden"
+                                            >
+                                                <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#F4E8E5_0deg_72deg,#EEF2EF_72deg_144deg,#DCEDEA_144deg_216deg,#E9F5F3_216deg_288deg,#FEF9F3_288deg_360deg)]" />
+
+                                                <div className="absolute inset-0">
+                                                    {prizes.map((p, i) => (
+                                                        <div
+                                                            key={i}
+                                                            className="absolute inset-0 flex items-start justify-center pt-12"
+                                                            style={{ transform: `rotate(${p.Angle}deg)` }}
+                                                        >
+                                                            <div className="flex flex-col items-center gap-2" style={{ transform: `rotate(-${p.Angle}deg)` }}>
+                                                                <div className="p-4 bg-white/50 backdrop-blur-md rounded-full shadow-lg ring-2 ring-white/10">
+                                                                    <p.Icon size={32} className="text-[#00767a] drop-shadow-sm" />
+                                                                </div>
+                                                                <span className="text-[11px] font-black text-[#00767a] uppercase tracking-tighter drop-shadow-sm text-center max-w-[90px] leading-tight">
+                                                                    {p.Label}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+
+                                            <button
+                                                onClick={spinWheel}
+                                                disabled={isSpinning || hasSpun}
+                                                className={`absolute w-44 h-44 rounded-full border-[10px] border-white shadow-[0_40px_80px_rgba(0,0,0,0.6)] z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-[#00767a] transition-all transform hover:scale-110 active:scale-90 ${hasSpun ? 'bg-green-500 text-white' : 'hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]'} group`}
+                                                style={{
+                                                    background: hasSpun ? '#22c55e' : 'linear-gradient(90deg, #F4E8E5 0%, #EEF2EF 50%, #DCEDEA 100%)'
+                                                }}
+                                            >
+                                                {hasSpun ? (
+                                                    <div className="flex flex-col items-center">
+                                                        <CheckCircle size={64} className="mb-2" />
+                                                        <span className="text-[10px] font-normal uppercase tracking-widest">Gagné !</span>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div className="p-4 bg-gray-50 rounded-full mb-2 group-hover:scale-110 transition-transform">
+                                                            <CheckCircle size={36} />
+                                                        </div>
+                                                        <span className="text-[14px] font-normal uppercase tracking-tighter text-center leading-tight">
+                                                            touner<br />la roue
+                                                        </span>
+                                                    </>
+                                                )}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    </section>
-                )}
+                            </motion.div>
+                        </section>
+                    )
+                }
 
                 {/* Return Button */}
                 <div className="mt-20 flex justify-center pb-20">
@@ -592,8 +585,8 @@ const Dashboard = () => {
                         {t('nav.back')}
                     </Link>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 

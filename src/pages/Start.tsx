@@ -12,7 +12,8 @@ const Start = () => {
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl font-black text-[#2A2A2A] mb-14 text-center uppercase tracking-tighter"
+                    transition={{ duration: 0.6 }}
+                    className="text-5xl font-black text-[#2A2A2A] mb-14 text-center uppercase tracking-tight [word-spacing:0.2em]"
                 >
                     {t('start.title')}
                 </motion.h1>
@@ -38,7 +39,7 @@ const Start = () => {
                     </div>
                 </section>
 
-                {/* Steps Section - MOVED UP (MD Line 148) */}
+                {/* Steps Section - MOVED (MD architecture update) */}
                 <section className="mb-24 px-4 relative">
                     <h2 className="text-4xl font-normal mb-20 text-center text-[#2A2A2A] uppercase tracking-tighter">
                         {t('start.process.title')}
@@ -87,14 +88,14 @@ const Start = () => {
                     </div>
                 </section>
 
-                {/* Deux divs l'une en dessous de l'autre pour Avis et Exemples (MD Line 165) */}
+                {/* Deux divs l'une en dessous de l'autre pour Avis et Exemples (MD Line 152) */}
                 <section className="mb-20 w-full space-y-10">
-                    {/* Block 1: Testimonials (Avis des clients) - MD Line 160 & 168 */}
-                    <div 
+                    {/* Block 1: Testimonials (Avis des clients) - MD Line 147 */}
+                    <div
                         className="w-full rounded-[3rem] p-5 backdrop-blur-xl"
-                        style={{ 
-                            backgroundColor: 'rgba(255, 255, 255, 0.75)', 
-                            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.14)',
+                        style={{
+                            backgroundColor: 'rgba(255, 255, 255, 0.75)',
+                            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
                             border: '1px solid #EAEAEA'
                         }}
                     >
@@ -104,7 +105,7 @@ const Start = () => {
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 {[1, 2, 3, 4].map((num) => (
-                                    <div key={num} className="bg-[#FFF] p-8 rounded-[2.5rem] shadow-sm border border-black/5 relative group hover:scale-[1.02] transition-transform">
+                                    <div key={num} className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-black/5 relative group hover:scale-[1.02] transition-transform">
                                         <Quote size={24} className="absolute -top-3 -left-2 text-kelcom-cta opacity-10 group-hover:opacity-30" />
                                         <div className="flex gap-1 mb-4">
                                             {[...Array(5)].map((_, i) => (
@@ -130,10 +131,10 @@ const Start = () => {
                         </div>
                     </div>
 
-                    {/* Block 2: Examples of messages - MD Line 157 & 180 */}
-                    <div 
+                    {/* Block 2: Examples of messages - MD Line 144 */}
+                    <div
                         className="w-full rounded-[3rem] p-5"
-                        style={{ 
+                        style={{
                             backgroundColor: '#F4F4F4',
                             boxShadow: '0 4px 12px rgba(0, 0, 0, 0.14)',
                             border: '1px solid #EAEAEA'
@@ -150,7 +151,7 @@ const Start = () => {
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
-                                        className="bg-[#FFF] p-8 rounded-[2.5rem] border border-white shadow-sm text-left"
+                                        className="bg-white p-8 rounded-[2.5rem] border border-white shadow-lg shadow-black/2 text-left"
                                     >
                                         <div className="bg-kelcom-cta/10 inline-block px-4 py-1 rounded-full text-kelcom-cta text-[10px] font-normal uppercase tracking-widest mb-4">
                                             Exemple {num}

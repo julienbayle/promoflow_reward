@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { Mail, Phone, MapPin, Globe, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Phone, MapPin, Globe, Linkedin, ShieldCheck } from 'lucide-react';
 
 export const Footer = () => {
     const { t } = useTranslation();
@@ -9,7 +10,9 @@ export const Footer = () => {
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
                 {/* Logo and About */}
                 <div className="flex flex-col gap-6">
-                    <img src="/assets/images/logo.png" alt="Kelcom" className="h-10 w-auto object-contain self-start" />
+                    <Link to="/">
+                        <img src="/assets/images/logo.png" alt="Kelcom" className="h-10 w-auto object-contain self-start" />
+                    </Link>
                     <p className="text-sm leading-relaxed">
                         Kelcom, votre partenaire expert en objets publicitaires et communication par l'objet.
                     </p>
@@ -17,11 +20,7 @@ export const Footer = () => {
 
                 {/* Contact Info */}
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.contact')}</h4>
-                    <div className="flex items-center gap-3 text-sm">
-                        <Mail size={18} className="text-[#00767a]" />
-                        <a href="mailto:recommandation@kelcom.fr" className="hover:underline">recommandation@kelcom.fr</a>
-                    </div>
+                    <h4 className="font-bold text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.contact')}</h4>
                     <div className="flex items-center gap-3 text-sm">
                         <Phone size={18} className="text-[#00767a]" />
                         <a href="tel:0240352180" className="hover:underline">02 40 35 21 80</a>
@@ -34,16 +33,18 @@ export const Footer = () => {
 
                 {/* Links */}
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">Liens</h4>
+                    <h4 className="font-bold text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.links')}</h4>
                     <a href="https://www.kelcom.fr" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:underline">
                         <Globe size={16} /> {t('footer.website')}
                     </a>
-                    <a href="https://www.kelcom.fr/information-kelcom/information-legale" target="_blank" rel="noopener noreferrer" className="text-sm hover:underline">{t('footer.legal')}</a>
+                    <a href="https://www.kelcom.fr/information-kelcom/information-legale" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:underline">
+                        <ShieldCheck size={16} className="text-[#00767a]" /> {t('footer.legal')}
+                    </a>
                 </div>
 
                 {/* Social Media */}
                 <div className="flex flex-col gap-4">
-                    <h4 className="font-normal text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.social')}</h4>
+                    <h4 className="font-bold text-kelcom-cta uppercase text-xs tracking-widest">{t('footer.social')}</h4>
                     <div className="flex gap-4">
                         <a href="https://www.linkedin.com/company/kelcom-fr/?originalSubdomain=fr" target="_blank" rel="noopener noreferrer" className="p-2 bg-[#00767a]/10 rounded-full text-[#00767a] hover:bg-[#00767a] hover:text-white transition-all">
                             <Linkedin size={20} />

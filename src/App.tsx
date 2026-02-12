@@ -5,10 +5,12 @@ import Rewards from './pages/Rewards';
 import Dashboard from './pages/Dashboard';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-background-main text-[#242424] font-sans transition-colors duration-300 relative">
         <div className="relative z-10">
           <Navbar />

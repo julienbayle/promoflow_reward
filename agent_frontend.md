@@ -35,7 +35,7 @@ mettre le logo de Kelcom se trouvant dans public /assets/images/logo.png  tout e
 
 
  # Footer
-il faut ajouter un footer tout en bas de la page avec le logo de Kelcom, les mentions légales et un lien vers le site web de Kelcom, l'email de contact et le numéro de téléphone de Kelcom, l'adresse de Kelcom(Bât, 1 Rue Eugène Varlin Les Dorides - Bât. 1, 44100 Nantes), les liens vers les réseaux sociaux de Kelcom 
+il faut ajouter un footer tout en bas de la page avec le logo de Kelcom, les mentions légales et un lien vers le site web de Kelcom,le numéro de téléphone de Kelcom, l'adresse de Kelcom(Bât, 1 Rue Eugène Varlin Les Dorides - Bât. 1, 44100 Nantes), les liens vers les réseaux sociaux de Kelcom 
 
 creer un lien vers https://www.kelcom.fr/information-kelcom/information-legale a partir de mention legale se trouvant sur le footer 
 
@@ -47,14 +47,16 @@ font-weight: 300;
 border-top: #00767a 1px solid;
 
 connecter les liens des reseaux sociaux du footer avec les liens des reseaux sociaux de Kelcom
-- facebook : https://fr-fr.facebook.com/kelcom.fr
 -linkedin : https://www.linkedin.com/company/kelcom-fr/?originalSubdomain=fr
+
+-générer un pictogramme devant mention legale
+
  
 CTA: background-Couleur : #EF7359, color: #FFF, border: none, height: 40px, front-size: 16px, padding: 10px 50px 0 50px, text-transform: uppercase, text-align: center, border-radius: 20px, font-weight: 300. 
 
 
 ## TES TÂCHES (Création de pages) :
-aujouter une navbar Horizontal tout en haut de la page avec le logo de Kelcom et les liens vers les pages **landing**(Acceuil), **start**(Temoignage), **rewards**(Avantages), **dashboard**(suivre mes Recompenses) et un bouton pour changer de langue a droite de la navbar, couleur de la navbar : #FFF, couleur des textes: #333, font-size: 18px, font-weight: 350, 
+aujouter une navbar Horizontal tout en haut de la page avec le logo de Kelcom et les liens vers les pages **landing**(Acceuil), **start**(Participer), **rewards**(Avantages), **dashboard**(suivre mes Recompenses) et un bouton pour changer de langue a droite de la navbar, couleur de la navbar : #FFF, couleur des textes: #333, font-size: 18px, font-weight: 350, 
 
 Langue proposer Anglais et Français
 
@@ -196,8 +198,8 @@ Cette page détaille le programme de récompense
 Participation au tirage au sort de fin d'année pour vous et votre client disposition d'articles au choix en guise de premier cadeau.
 (explication à généré)
 
-**Boutons CTA :**
-- **CTA Principal :** "Mes recommandations" (lien vers page **dashboard**), fond `#EF7359`, texte blanc.
+**Boutons CTA :**$
+- **CTA Principal :** " suivre mes recommandations" (lien vers page **dashboard**), fond `#EF7359`, texte blanc.
 
 ### Page **dashboard**
 

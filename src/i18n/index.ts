@@ -40,7 +40,7 @@ const resources = {
             nav: {
                 lang: "Français",
                 home: "Acceuil",
-                start: "Temoignage",
+                start: "Participer",
                 rewards: "Avantages",
                 dashboard: "suivre mes Recompenses",
                 back: "Retour"
@@ -91,11 +91,11 @@ const resources = {
                 },
                 process: {
                     title: "Les étapes",
-                    s1: "Email recommandés",
+                    s1: "envoi de email de recommandation",
                     s2: "Votre contact appelle Kelcom",
                     s3: "Kelcom appelle votre contact au bout de 15 jours sans nouvelles",
-                    s4: "Kelcom qualifie le contact et le valide dans le programme de recommandation",
-                    s5: "Une fois le contact qualifiée, vous pourrez choisir votre récompense."
+                    s4: "Kelcom qualifie et valide le contact dans le programme de recommandation",
+                    s5: "Une fois le contact qualifié t validé, vous pourrez choisir votre récompense."
                 },
                 cta: "Voir les récompenses",
                 footer_note: "Kelcom prendra contact et qualifiera ce contact si celui si ne nous contacte pas directement sous 15 jours suite au message."
@@ -114,7 +114,7 @@ const resources = {
                     discount: "5% de remise sur sa première commande"
                 },
                 draw: {
-                    title: "Tirage au sort de fin d'année",
+                    title: "20 ans d’existence, un avantage pour vous",
                     text: "En plus de vos récompenses immédiates, chaque recommandation réussie vous offre, ainsi qu'à votre contact, une chance supplémentaire de gagner lors de notre grand tirage au sort annuel en novembre. Disposition d'articles au choix en guise de premier cadeau.",
                     prizes: "Les lots de cette année incluent une trottinette électrique, une console PS5 et bien d'autres surprises !"
                 },
@@ -125,10 +125,16 @@ const resources = {
                 videoError: "Votre navigateur ne supporte pas la lecture de vidéos.",
                 wheel: {
                     gift1: "2% de remise",
-                    gitf2: "Bon achat 50€",
+                    gift2: "Bon achat 50€",
                     gift3: "Bon achat 100€",
                     gift4: "Bon achat 200€",
-                    gitf5: "Don association",
+                    gift5: "Don association",
+                    ps5: "Console PS5",
+                    scooter: "Trottinette",
+                    voucher: "Bon d'achat",
+                    trip: "Voyage",
+                    phone: "Smartphone",
+                    genericGift: "Cadeau",
                     surprise: "Surprise !",
                     wonPrize: "Vous avez gagné : {{prize}}"
                 },
@@ -156,6 +162,7 @@ const resources = {
                 contact: "Contact",
                 address: "Adresse",
                 social: "Suivez-nous",
+                links: "Liens",
                 rights: "Tous droits réservés © Kelcom"
             },
             dashboard: {
@@ -230,7 +237,7 @@ const resources = {
             nav: {
                 lang: "English",
                 home: "Home",
-                start: "Testimonials",
+                start: "Participate",
                 rewards: "Advantages",
                 dashboard: "Rewards and tracking",
                 back: "Back"
@@ -315,10 +322,16 @@ const resources = {
                 videoError: "Your browser does not support the video tag.",
                 wheel: {
                     gift1: "2% discount",
-                    gitf2: "50€ voucher",
+                    gift2: "50€ voucher",
                     gift3: "100€ voucher",
                     gift4: "200€ voucher",
-                    gitf5: "Association donation",
+                    gift5: "Association donation",
+                    ps5: "PS5 Console",
+                    scooter: "E-Scooter",
+                    voucher: "Gift Voucher",
+                    trip: "Trip",
+                    phone: "Smartphone",
+                    genericGift: "Gift",
                     surprise: "Surprise!",
                     wonPrize: "You won: {{prize}}"
                 },
@@ -346,6 +359,7 @@ const resources = {
                 contact: "Contact",
                 address: "Address",
                 social: "Follow us",
+                links: "Quick Links",
                 rights: "All rights reserved © Kelcom"
             },
             dashboard: {
