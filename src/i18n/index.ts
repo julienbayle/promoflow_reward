@@ -30,16 +30,16 @@ const resources = {
                 discount: "Remise sur votre prochaine commande",
                 donation: "Don à des associations de votre choix",
                 cards: "Cartes cadeaux",
-                draw: "Chaque année en novembre, tirage au sort de 3 parrains pour une récompense exceptionnel en fin d'année. Les lots de cette année :",
+                draw: "Chaque année en novembre, tirage au sort de 3 parrains pour une récompense exceptionnelle en fin d'année. Les lots de cette année :",
                 prizes: {
-                    scooter: "1 trotinnette électrique",
+                    scooter: "1 trottinette électrique",
                     ps5: "1 console PS5",
                     others: "10 autres lots"
                 }
             },
             nav: {
                 lang: "Français",
-                home: "Acceuil",
+                home: "Accueil",
                 start: "Participer",
                 rewards: "Avantages",
                 dashboard: "suivre mes Recompenses",
@@ -92,20 +92,20 @@ const resources = {
                 process: {
                     title: "Les étapes",
                     s1: "envoi de email de recommandation",
-                    s2: "Votre contact appelle Kelcom",
+                    s2: "Vous mettez votre contact en relation avec Kelcom",
                     s3: "Kelcom appelle votre contact au bout de 15 jours sans nouvelles",
                     s4: "Kelcom qualifie et valide le contact dans le programme de recommandation",
-                    s5: "Une fois le contact qualifié t validé, vous pourrez choisir votre récompense."
+                    s5: "Une fois le contact qualifié et validé, vous pourrez choisir votre récompense."
                 },
                 cta: "Voir les récompenses",
                 step: "Étape",
                 example: "Exemple",
                 subject: "Objet",
-                footer_note: "Kelcom prendra contact et qualifiera ce contact si celui si ne nous contacte pas directement sous 15 jours suite au message."
+                footer_note: "Kelcom prendra contact et qualifiera ce contact si celui-ci ne nous contacte pas directement sous 15 jours suite au message."
             },
             rewardsPage: {
                 title: "Programme des récompenses",
-                subtitle: "Pour nos 20ans découvrez vos avantage et celui de votre contact a introduire  .",
+                subtitle: "Pour nos 20 ans, découvrez vos avantages et ceux de votre contact à introduire.",
                 forYou: {
                     title: "Pour vous",
                     discount: "2% de remise sur votre prochaine commande",
@@ -164,6 +164,7 @@ const resources = {
                 }
             },
             footer: {
+                description: "Kelcom, votre partenaire expert en objets publicitaires et communication par l'objet.",
                 legal: "Mentions légales",
                 website: "Site Kelcom",
                 contact: "Contact",
@@ -173,9 +174,12 @@ const resources = {
                 rights: "Tous droits réservés © Kelcom"
             },
             dashboard: {
-                title: "Suivre mes recommandations",
                 anniversary: "20 ANS D'EXISTENCE",
                 partnership: "Partenariat & Réussite Kelcom",
+                tableTitle: "Tableau de bord de parrainage",
+                formSuccess: "Recommandation enregistrée ! Cliquez sur \"Tourner la roue\" dans le tableau ci-dessous pour gagner votre cadeau.",
+                formErrorContactExists: "Désolé, ce contact est déjà recommandé par un autre parrain.",
+                formErrorOneLimit: "Désolé, chaque apporteur d'affaire a droit à recommander 1 seul contact. Vous pouvez suivre votre recommandation ci-dessous.",
                 form: {
                     yourEmail: "Votre email",
                     contactEmail: "Email du contact",
@@ -188,7 +192,7 @@ const resources = {
                     label: "Suivre mes recommandations (Entrez votre email)"
                 },
                 table: {
-                    contact: "Contact recommandé",
+                    contact: "Mes recommandations",
                     status: "Statut",
                     date: "Date de la recommandation",
                     lastUpdate: "Dernière mise à jour",
@@ -216,7 +220,8 @@ const resources = {
                     description: "Vous avez débloqué un tour de roue. Cliquez sur le bouton central pour découvrir votre récompense.",
                     success: "Bravo !",
                     won: "Vous avez remporté :",
-                    thanks: "Toute l'équipe Kelcom vous remercie ! Votre cadeau a bien été enregistré et vous sera envoyé dès que votre contact recommandé passera sa première commande."
+                    thanks: "Toute l'équipe Kelcom vous remercie ! Votre cadeau a bien été enregistré et vous sera envoyé dès que votre contact recommandé passera sa première commande.",
+                    wonBadge: "Gagné !"
                 }
             }
         }
@@ -224,7 +229,7 @@ const resources = {
     en: {
         translation: {
             hero: {
-                title: "Loyality Program",
+                title: "Loyalty and Referral Program",
                 subtitle: "Your involvement, our success, be rewarded",
                 cta: "I participate",
                 secondary: "Track my recommendations",
@@ -324,7 +329,7 @@ const resources = {
             },
             rewardsPage: {
                 title: "Rewards Program",
-                subtitle: "Discover all the ways Kelcom thanks you for your commitment and recommendations.",
+                subtitle: "For our 20th anniversary, discover your benefits and those of the contact you introduce.",
                 forYou: {
                     title: "For You",
                     discount: "2% discount on your next order",
@@ -364,7 +369,7 @@ const resources = {
                     wonPrize: "You won: {{prize}}"
                 },
                 form: {
-                    title: "Recommend a contact",
+                    title: "My recommendations",
                     subtitle: "Enter your email and your contact's email to introduce",
                     yourEmail: "Your email",
                     contactEmail: "Recommended contact's email",
@@ -383,6 +388,7 @@ const resources = {
                 }
             },
             footer: {
+                description: "Kelcom, your expert partner in promotional items and gift communication.",
                 legal: "Legal Notices",
                 website: "Kelcom Website",
                 contact: "Contact",
@@ -392,9 +398,12 @@ const resources = {
                 rights: "All rights reserved © Kelcom"
             },
             dashboard: {
-                title: "Track my recommendations",
                 anniversary: "20 YEARS OF EXISTENCE",
                 partnership: "Kelcom Partnership & Success",
+                tableTitle: "Referral Dashboard",
+                formSuccess: "Recommendation saved! Click on \"Spin the wheel\" in the table below to win your gift.",
+                formErrorContactExists: "Sorry, this contact has already been recommended by another sponsor.",
+                formErrorOneLimit: "Sorry, each sponsor is limited to 1 recommendation. You can track your recommendation below.",
                 form: {
                     yourEmail: "Your email",
                     contactEmail: "Contact's email",
@@ -407,7 +416,7 @@ const resources = {
                     label: "Track my recommendations (Enter your email)"
                 },
                 table: {
-                    contact: "Recommended contact",
+                    contact: "My recommendations",
                     status: "Status",
                     date: "Recommendation date",
                     lastUpdate: "Last update",
@@ -435,7 +444,8 @@ const resources = {
                     description: "You have unlocked a spin. Click the center button to discover your reward.",
                     success: "Well done!",
                     won: "You won:",
-                    thanks: "The entire Kelcom team thanks you! Your gift has been recorded and will be sent to you as soon as your recommended contact places their first order."
+                    thanks: "The entire Kelcom team thanks you! Your gift has been recorded and will be sent to you as soon as your recommended contact places their first order.",
+                    wonBadge: "Won!"
                 }
             }
         }

@@ -14,7 +14,7 @@ export const Footer = () => {
                         <img src={`${import.meta.env.BASE_URL}assets/images/logo.png`} alt="Kelcom" className="h-10 w-auto object-contain self-start" />
                     </Link>
                     <p className="text-sm leading-relaxed">
-                        Kelcom, votre partenaire expert en objets publicitaires et communication par l'objet.
+                        {t('footer.description')}
                     </p>
                 </div>
 

@@ -72,7 +72,7 @@ const Dashboard = () => {
                     setIsSubmitted(true);
                     return;
                 } else {
-                    setFormError("Désolé, ce contact est déjà recommandé par un autre parrain.");
+                    setFormError(t('dashboard.formErrorContactExists'));
                     setIsSubmitting(false);
                     return;
                 }
@@ -81,7 +81,7 @@ const Dashboard = () => {
             const userRecs = existing.filter(r => r.userEmail === formUserEmail);
             if (userRecs.length >= 1) {
                 // User already has one recommendation, they should check that one
-                setFormError("Désolé, chaque apporteur d'affaire a droit à recommander 1 seul contact. Vous pouvez suivre votre recommandation ci-dessous.");
+                setFormError(t('dashboard.formErrorOneLimit'));
                 const filtered = existing.filter(rec => rec.userEmail === formUserEmail);
                 setRecommendations(filtered);
                 setIsSubmitting(false);
@@ -304,7 +304,7 @@ const Dashboard = () => {
                                         {isSubmitted && !isValidated && (
                                             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-3 text-green-100 font-medium text-sm bg-green-500/20 p-5 rounded-2xl border border-green-500/30 shadow-lg">
                                                 <CheckCircle size={20} className="flex-shrink-0" />
-                                                <span>Recommandation enregistrée ! Cliquez sur "Tourner la roue" dans le tableau ci-dessous pour gagner votre cadeau.</span>
+                                                <span>{t('dashboard.formSuccess')}</span>
                                             </motion.div>
                                         )}
 
@@ -345,7 +345,7 @@ const Dashboard = () => {
                                 <div className="p-10 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
                                     <h3 className="text-2xl font-bold text-[#2A2A2A] uppercase tracking-tight flex items-center gap-3">
                                         <LayoutDashboard className="text-kelcom-cta" />
-                                        Tableau de bord de parrainage
+                                        {t('dashboard.tableTitle')}
                                     </h3>
                                     <div className="px-4 py-2 bg-white rounded-full border border-gray-100 text-[10px] font-normal text-[#1F2A44]/40 uppercase tracking-widest flex items-center gap-2">
                                         <Clock size={14} /> {t('dashboard.realtime')}
@@ -557,7 +557,7 @@ const Dashboard = () => {
                                                 {hasSpun ? (
                                                     <div className="flex flex-col items-center">
                                                         <CheckCircle size={64} className="mb-2" />
-                                                        <span className="text-[10px] font-normal uppercase tracking-widest">Gagné !</span>
+                                                        <span className="text-[10px] font-normal uppercase tracking-widest">{t('dashboard.wheel.wonBadge')}</span>
                                                     </div>
                                                 ) : (
                                                     <>
@@ -565,7 +565,7 @@ const Dashboard = () => {
                                                             <CheckCircle size={36} />
                                                         </div>
                                                         <span className="text-[14px] font-normal uppercase tracking-tighter text-center leading-tight">
-                                                            touner<br />la roue
+                                                            tourner<br />la roue
                                                         </span>
                                                     </>
                                                 )}

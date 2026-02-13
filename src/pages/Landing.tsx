@@ -293,12 +293,6 @@ const Landing = () => {
                         </div>
                     </div>
 
-                    <div className="text-center mt-12">
-                        <Link to="/start" className="btn-cta gap-3">
-                            <Sparkles size={20} />
-                            {t('hero.cta')}
-                        </Link>
-                    </div>
                 </div>
             </section>
             {/* 6. Vidéo Explicative */}
@@ -313,6 +307,12 @@ const Landing = () => {
                         </h2>
                     </div>
                     <ExplainerVideo />
+                    <div className="flex justify-center mt-16">
+                        <Link to="/start" className="btn-cta gap-3">
+                            <Sparkles size={20} />
+                            {t('hero.cta')}
+                        </Link>
+                    </div>
                 </div>
             </section>
         </div>
