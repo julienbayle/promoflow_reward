@@ -1,8 +1,71 @@
-
+import { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Gift, LayoutDashboard, Sparkles } from 'lucide-react';
+
+const ExplainerVideo = () => {
+    const { t, i18n } = useTranslation();
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (videoRef.current) {
+                const tracks = videoRef.current.textTracks;
+                const currentLang = i18n.language.split('-')[0];
+
+                for (let i = 0; i < tracks.length; i++) {
+                    if (tracks[i].language.startsWith(currentLang)) {
+                        tracks[i].mode = 'showing';
+                    } else {
+                        tracks[i].mode = 'disabled';
+                    }
+                }
+            }
+        }, 150);
+        return () => clearTimeout(timer);
+    }, [i18n.language]);
+
+    return (
+        <div className="w-full aspect-video bg-black rounded-[3rem] overflow-hidden relative shadow-2xl border-[6px] border-white/20 flex items-center justify-center">
+            <video
+                key={i18n.language}
+                ref={videoRef}
+                src={t('rewardsPage.videoSrc')}
+                className="w-full h-full object-cover"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+            >
+                <track
+                    src="subtitles_fr.vtt"
+                    kind="subtitles"
+                    srcLang="fr"
+                    label="Français"
+                    default={i18n.language.startsWith('fr')}
+                />
+                <track
+                    src="subtitles_en.vtt"
+                    kind="subtitles"
+                    srcLang="en"
+                    label="English"
+                    default={!i18n.language.startsWith('fr')}
+                />
+                <p className="text-white p-4">{t('rewardsPage.videoError')}</p>
+            </video>
+
+            {/* "Video" Label */}
+            <div className="absolute top-8 right-8 bg-kelcom-red text-white px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest flex items-center gap-2 pointer-events-none shadow-xl">
+                <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                {t('rewardsPage.videoLabel')}
+            </div>
+        </div>
+    );
+};
+
 
 const Landing = () => {
     const { t } = useTranslation();
@@ -238,7 +301,22 @@ const Landing = () => {
                     </div>
                 </div>
             </section>
+            {/* 6. Vidéo Explicative */}
+            <section className="px-6 py-24 bg-white">
+                <div className="max-w-5xl mx-auto">
+                    <div className="text-center mb-16">
+                        <span className="px-4 py-1.5 bg-gray-100 text-[#2A2A2A] rounded-full text-[10px] font-normal uppercase tracking-widest mb-4 inline-block">
+                            {t('rewardsPage.videoSectionBadge')}
+                        </span>
+                        <h2 className="text-4xl font-black text-[#1F2A44] uppercase tracking-tighter mb-4">
+                            {t('rewardsPage.videoSectionTitle')}
+                        </h2>
+                    </div>
+                    <ExplainerVideo />
+                </div>
+            </section>
         </div>
+
     );
 };
 

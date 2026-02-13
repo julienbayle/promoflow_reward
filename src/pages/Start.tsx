@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Mail, ArrowRight, Quote, Star, PhoneIncoming, Phone, UserCheck, Gift } from 'lucide-react';
+import { Mail, ArrowRight, Quote, Star, PhoneIncoming, Phone, UserCheck, Gift, Trophy } from 'lucide-react';
 
 const Start = () => {
     const { t } = useTranslation();
@@ -32,7 +32,7 @@ const Start = () => {
                                 "{t('start.instruction.text')}"
                             </p>
                             <div className="h-px w-32 bg-white/30 mx-auto"></div>
-                            <p className="text-sm text-white/70 font-normal tracking-wide">
+                            <p className="text-2xl text-white font-normal tracking-wide">
                                 {t('start.footer_note')}
                             </p>
                         </div>
@@ -63,7 +63,7 @@ const Start = () => {
                                             {num === 5 && <Gift size={32} className="relative z-10" />}
                                         </div>
                                         <div className="space-y-2">
-                                            <span className="text-[10px] font-normal text-[#2A2A2A]/40 uppercase tracking-[0.2em]">Étape {num}</span>
+                                            <span className="text-[10px] font-normal text-[#2A2A2A]/40 uppercase tracking-[0.2em]">{t('start.step')} {num}</span>
                                             <p className="text-[#1F2A44] font-normal text-sm uppercase tracking-tighter leading-tight max-w-[160px]">
                                                 {t(`start.process.s${num}`)}
                                             </p>
@@ -154,10 +154,10 @@ const Start = () => {
                                         className="bg-white p-8 rounded-[2.5rem] border border-white shadow-lg shadow-black/2 text-left"
                                     >
                                         <div className="bg-kelcom-cta/10 inline-block px-4 py-1 rounded-full text-kelcom-cta text-[10px] font-normal uppercase tracking-widest mb-4">
-                                            Exemple {num}
+                                            {t('start.example')} {num}
                                         </div>
                                         <p className="text-sm font-normal text-[#5B5B5B] mb-3 uppercase tracking-tighter">
-                                            Objet: {t(`start.examples.ex${num}.subject`)}
+                                            {t('start.subject')}: {t(`start.examples.ex${num}.subject`)}
                                         </p>
                                         <p className="text-lg text-[#242424] font-normal leading-relaxed">
                                             "{t(`start.examples.ex${num}.body`)}"
@@ -172,7 +172,7 @@ const Start = () => {
                 {/* Final CTA - MD Line 186 */}
                 <div className="flex justify-center pb-12">
                     <Link to="/rewards" className="h-16 bg-kelcom-cta text-white rounded-full flex items-center justify-center gap-4 px-12 font-normal uppercase tracking-widest hover:bg-[#d6654e] hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-kelcom-cta/40 min-w-[300px]">
-                        {t('start.cta')} <ArrowRight size={24} />
+                        <Trophy size={24} /> {t('start.cta')}
                     </Link>
                 </div>
             </div>

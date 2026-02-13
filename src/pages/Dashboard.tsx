@@ -224,12 +224,12 @@ const Dashboard = () => {
                             className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text text-center uppercase tracking-tighter leading-tight mb-8"
                             style={{ backgroundImage: 'linear-gradient(90deg, #1F8083 0%, #198686 50%, #11C5A2 100%)' }}
                         >
-                            20 ANS D'EXISTENCE
+                            {t('dashboard.anniversary')}
                         </h2>
 
                         <div className="flex items-center gap-3 text-[#1F2A44] font-black uppercase tracking-[0.2em] text-[11px] md:text-[13px] bg-white/70 backdrop-blur-md px-8 py-3 rounded-full border border-white shadow-sm ring-1 ring-black/5">
                             <Sparkles size={16} className="text-kelcom-cta animate-pulse" />
-                            Partenariat & Réussite Kelcom
+                            {t('dashboard.partnership')}
                             <Sparkles size={16} className="text-kelcom-cta animate-pulse" />
                         </div>
                     </div>
@@ -257,10 +257,10 @@ const Dashboard = () => {
                                 >
                                     <div className="space-y-3">
                                         <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-tight leading-tight">
-                                            Recommander un contact
+                                            {t('rewardsPage.form.title')}
                                         </h2>
                                         <p className="text-white/80 font-normal max-w-md">
-                                            Participez à notre programme et débloquez immédiatement votre cadeau sur la roue.
+                                            {t('rewardsPage.form.subtitle')}
                                         </p>
                                     </div>
 
@@ -348,18 +348,18 @@ const Dashboard = () => {
                                         Tableau de bord de parrainage
                                     </h3>
                                     <div className="px-4 py-2 bg-white rounded-full border border-gray-100 text-[10px] font-normal text-[#1F2A44]/40 uppercase tracking-widest flex items-center gap-2">
-                                        <Clock size={14} /> Mis à jour en temps réel
+                                        <Clock size={14} /> {t('dashboard.realtime')}
                                     </div>
                                 </div>
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left">
                                         <thead>
                                             <tr className="bg-gray-50 text-[#1F2A44]/40 uppercase text-[11px] font-normal tracking-[0.3em] border-b border-gray-100">
-                                                <th className="px-8 py-10 uppercase tracking-widest">Email du contact recommandé</th>
-                                                <th className="px-8 py-10 uppercase tracking-widest">Statut</th>
-                                                <th className="px-8 py-10 uppercase tracking-widest hidden md:table-cell">Date de la recommandation</th>
-                                                <th className="px-8 py-10 uppercase tracking-widest hidden lg:table-cell">Date de la dernière mise à jour</th>
-                                                <th className="px-8 py-10 text-center uppercase tracking-widest">Telechargement de l'envoi du cadeau</th>
+                                                <th className="px-8 py-10 uppercase tracking-widest">{t('dashboard.table.email')}</th>
+                                                <th className="px-8 py-10 uppercase tracking-widest">{t('dashboard.table.status')}</th>
+                                                <th className="px-8 py-10 uppercase tracking-widest hidden md:table-cell">{t('dashboard.table.date')}</th>
+                                                <th className="px-8 py-10 uppercase tracking-widest hidden lg:table-cell">{t('dashboard.table.update')}</th>
+                                                <th className="px-8 py-10 text-center uppercase tracking-widest">{t('dashboard.table.gift')}</th>
                                             </tr>
                                         </thead>
                                         <tbody className="divide-y divide-black/5">
@@ -410,12 +410,12 @@ const Dashboard = () => {
                                                                 className="px-6 py-3 bg-kelcom-cta text-white rounded-full text-[10px] font-normal uppercase tracking-widest hover:scale-105 transition-all shadow-lg animate-bounce flex items-center justify-center gap-2 mx-auto"
                                                             >
                                                                 <Gamepad2 size={14} />
-                                                                Tourner la roue
+                                                                {t('dashboard.table.spin')}
                                                             </button>
                                                         ) : rec.status === 'OK_REWARDED' ? (
                                                             <button
                                                                 className="w-12 h-12 bg-green-500 text-white rounded-[1.25rem] shadow-xl shadow-green-500/20 hover:scale-110 active:scale-95 transition-all flex items-center justify-center mx-auto hover:bg-green-600"
-                                                                title="Télécharger votre cadeau"
+                                                                title={t('dashboard.table.download')}
                                                             >
                                                                 <Download size={22} />
                                                             </button>
@@ -424,7 +424,7 @@ const Dashboard = () => {
                                                                 <div className="w-12 h-12 bg-gray-100 text-gray-300 rounded-[1.25rem] flex items-center justify-center mx-auto opacity-40">
                                                                     <Download size={22} />
                                                                 </div>
-                                                                <span className="text-[9px] uppercase tracking-tighter text-gray-400 group-hover/item:text-kelcom-cta transition-colors">En attente</span>
+                                                                <span className="text-[9px] uppercase tracking-tighter text-gray-400 group-hover/item:text-kelcom-cta transition-colors">{t('dashboard.table.pending')}</span>
                                                             </div>
                                                         )}
                                                     </td>
@@ -479,17 +479,17 @@ const Dashboard = () => {
                                                     </div>
                                                     <div className="space-y-4">
                                                         <h2 className="text-5xl font-bold text-white uppercase tracking-tight leading-none">
-                                                            Bravo !
+                                                            {t('dashboard.wheel.success')}
                                                         </h2>
                                                         <div className="bg-white px-10 py-6 rounded-[2.5rem] border border-gray-100 inline-block shadow-2xl transform hover:scale-105 transition-transform cursor-default">
-                                                            <p className="text-[#2A2A2A]/40 text-[10px] font-normal uppercase tracking-[0.3em] mb-2 text-center">Vous avez remporté :</p>
+                                                            <p className="text-[#2A2A2A]/40 text-[10px] font-normal uppercase tracking-[0.3em] mb-2 text-center">{t('dashboard.wheel.won')}</p>
                                                             <p className="text-4xl md:text-5xl font-bold text-[#1F2A44] uppercase text-center flex items-center gap-4">
                                                                 🎁 {wonPrize}
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <p className="text-white/90 font-normal max-w-md">
-                                                        Toute l'équipe Kelcom vous remercie ! Votre cadeau a bien été enregistré et vous sera envoyé dès que votre contact recommandé passera sa première commande.
+                                                        {t('dashboard.wheel.thanks')}
                                                     </p>
                                                 </motion.div>
                                             ) : (
@@ -503,10 +503,10 @@ const Dashboard = () => {
                                                         <Gamepad2 size={40} />
                                                     </div>
                                                     <h2 className="text-4xl font-bold text-white uppercase tracking-tight leading-tight">
-                                                        Tournez la roue des cadeaux !
+                                                        {t('dashboard.wheel.title')}
                                                     </h2>
                                                     <p className="text-white/80 font-normal max-w-md">
-                                                        Vous avez débloqué un tour de roue. Cliquez sur le bouton central pour découvrir votre récompense.
+                                                        {t('dashboard.wheel.description')}
                                                     </p>
                                                 </motion.div>
                                             )}

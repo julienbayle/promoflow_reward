@@ -6,7 +6,7 @@ const resources = {
     fr: {
         translation: {
             hero: {
-                title: "Programme fidélité et recommandation",
+                title: "Programme fidélité et de recommandation",
                 subtitle: "Votre implication, notre succès, soyez récompensé",
                 cta: "Je participe",
                 secondary: "Suivre mes recommandations"
@@ -16,11 +16,11 @@ const resources = {
                 text: "Votre réseau devient un atout. Chaque mise en relation peut se transformer en opportunité concrète. Très simple, un simple email d'introduction de votre part suffit pour participer. Puis, nous gérons tout, sauf le choix de votre récompense"
             },
             sharing: {
-                title: "Partage du programme",
+                title: "A qui nous recommander ?",
                 text: "Partagez notre programme avec vos contacts professionnels et institutions publiques. Chaque recommandation concrétisée vous donne droit à une récompense exceptionnelle."
             },
             steps: {
-                title: "Comment ça fonctionne",
+                title: "Comment ça fonctionne ?",
                 step1: "Vous : Email de recommandation",
                 step2: "Kelcom : Prise de contact et qualification",
                 step3: "Vous: Choix de votre récompense"
@@ -98,11 +98,14 @@ const resources = {
                     s5: "Une fois le contact qualifié t validé, vous pourrez choisir votre récompense."
                 },
                 cta: "Voir les récompenses",
+                step: "Étape",
+                example: "Exemple",
+                subject: "Objet",
                 footer_note: "Kelcom prendra contact et qualifiera ce contact si celui si ne nous contacte pas directement sous 15 jours suite au message."
             },
             rewardsPage: {
                 title: "Programme des récompenses",
-                subtitle: "Découvrez toutes les façons dont Kelcom vous remercie pour votre engagement et vos recommandations.",
+                subtitle: "Pour nos 20ans découvrez vos avantage et celui de votre contact a introduire  .",
                 forYou: {
                     title: "Pour vous",
                     discount: "2% de remise sur votre prochaine commande",
@@ -116,13 +119,16 @@ const resources = {
                 draw: {
                     title: "20 ans d’existence, un avantage pour vous",
                     text: "En plus de vos récompenses immédiates, chaque recommandation réussie vous offre, ainsi qu'à votre contact, une chance supplémentaire de gagner lors de notre grand tirage au sort annuel en novembre. Disposition d'articles au choix en guise de premier cadeau.",
-                    prizes: "Les lots de cette année incluent une trottinette électrique, une console PS5 et bien d'autres surprises !"
+                    prizes: "Les lots de cette année incluent une trottinette électrique, une console PS5 et bien d'autres surprises !",
+                    prizesTitle: "Lots exceptionnels cette année :",
+                    others: "+ 10 autres cadeaux de prestige !"
                 },
                 ctaDashboard: "Mes recommandations",
                 videoLabel: "Vidéo de présentation",
                 videoSectionTitle: "Comment ça se passe ?",
                 videoSectionBadge: "Processus complet",
                 videoError: "Votre navigateur ne supporte pas la lecture de vidéos.",
+                videoSrc: "explainer.mp4",
                 wheel: {
                     gift1: "2% de remise",
                     gift2: "Bon achat 50€",
@@ -139,12 +145,13 @@ const resources = {
                     wonPrize: "Vous avez gagné : {{prize}}"
                 },
                 form: {
-                    title: "Activer la roue des cadeaux",
+                    title: "Mes recommandations",
+                    subtitle: "Saisissez votre email et celui de votre contact à introduire",
                     yourEmail: "Votre email",
                     contactEmail: "Email du contact recommandé",
                     messagePlaceholder: "Votre message...",
                     copyInfo: "Kelcom sera mis en copie automatique.",
-                    submitButton: "Envoyer",
+                    submitButton: "Suivre ma recommandation",
                     validating: "Validation...",
                     success: {
                         title: "Recommandation Envoyée !",
@@ -167,12 +174,14 @@ const resources = {
             },
             dashboard: {
                 title: "Suivre mes recommandations",
+                anniversary: "20 ANS D'EXISTENCE",
+                partnership: "Partenariat & Réussite Kelcom",
                 form: {
                     yourEmail: "Votre email",
                     contactEmail: "Email du contact",
                     message: "Message",
                     ccMention: "Kelcom sera mis en copie automatique.",
-                    submit: "Envoyer",
+                    submit: "Suivre ma recommandation",
                     placeholder: "votre@email.com"
                 },
                 track: {
@@ -181,20 +190,33 @@ const resources = {
                 table: {
                     contact: "Contact recommandé",
                     status: "Statut",
-                    date: "Date",
-                    lastUpdate: "Mise à jour",
-                    download: "Cadeau"
+                    date: "Date de la recommandation",
+                    lastUpdate: "Dernière mise à jour",
+                    download: "Télécharger votre cadeau",
+                    email: "Email du contact recommandé",
+                    update: "Dernière mise à jour",
+                    gift: "Cadeau",
+                    spin: "Tourner la roue",
+                    pending: "En attente"
                 },
                 status: {
                     title: "Statut de la recommandation",
                     UNKNOWN: "Désolé, nous n'avons pas trouvé de recommandation correspondant à ces emails.",
-                    WAITING_FOR_CONTACT: "En attente : Nous attendons que votre contact nous sollicite suite à votre email (premiers 15 jours).",
+                    WAITING_FOR_CONTACT: "Validée : Nous attendons que votre contact nous sollicite suite à votre email (premiers 15 jours).",
                     TO_BE_QUALIFED: "À contacter : L'équipe Kelcom va prochainement prendre contact avec votre recommandé.",
                     FAILED_TO_CONTACT: "Échec de contact : Nous n'avons pas réussi à joindre votre contact pour le moment.",
                     IN_CONTACT: "En cours : Nous sommes en échange avec votre contact pour qualifier son besoin.",
                     FAILED: "Non qualifié : Cette recommandation n'a malheureusement pas pu aboutir.",
                     OK_TO_BE_REWARDED: "Félicitations ! Votre recommandation est validée. Vous pouvez maintenant choisir votre récompense.",
                     OK_REWARDED: "Récompense envoyée : Vous avez déjà profité de votre récompense pour cette recommandation. Merci !"
+                },
+                realtime: "Mis à jour en temps réel",
+                wheel: {
+                    title: "Tournez la roue des cadeaux !",
+                    description: "Vous avez débloqué un tour de roue. Cliquez sur le bouton central pour découvrir votre récompense.",
+                    success: "Bravo !",
+                    won: "Vous avez remporté :",
+                    thanks: "Toute l'équipe Kelcom vous remercie ! Votre cadeau a bien été enregistré et vous sera envoyé dès que votre contact recommandé passera sa première commande."
                 }
             }
         }
@@ -295,6 +317,9 @@ const resources = {
                     s5: "Once the contact is qualified, you can choose your reward."
                 },
                 cta: "View rewards",
+                step: "Step",
+                example: "Example",
+                subject: "Subject",
                 footer_note: "Kelcom will contact and qualify this contact if they do not contact us directly within 15 days after the message."
             },
             rewardsPage: {
@@ -311,15 +336,18 @@ const resources = {
                     discount: "5% discount on their first order"
                 },
                 draw: {
-                    title: "Year-End Draw",
+                    title: "20 years of existence, an advantage for you",
                     text: "In addition to your immediate rewards, every successful recommendation gives you and your contact an extra chance to win in our grand annual draw in November. A choice of items available as a first gift.",
-                    prizes: "This year's prizes include an electric scooter, a PS5 console, and many other surprises!"
+                    prizes: "This year's prizes include an electric scooter, a PS5 console, and many other surprises!",
+                    prizesTitle: "Exceptional prizes this year:",
+                    others: "+ 10 other prestigious gifts!"
                 },
                 ctaDashboard: "My recommendations",
                 videoLabel: "Presentation Video",
                 videoSectionTitle: "How does it work?",
                 videoSectionBadge: "Complete process",
                 videoError: "Your browser does not support the video tag.",
+                videoSrc: "explainer.mp4",
                 wheel: {
                     gift1: "2% discount",
                     gift2: "50€ voucher",
@@ -336,12 +364,13 @@ const resources = {
                     wonPrize: "You won: {{prize}}"
                 },
                 form: {
-                    title: "Activate the Gift Wheel",
+                    title: "Recommend a contact",
+                    subtitle: "Enter your email and your contact's email to introduce",
                     yourEmail: "Your email",
                     contactEmail: "Recommended contact's email",
                     messagePlaceholder: "Your message...",
                     copyInfo: "Kelcom will be automatically CC'd.",
-                    submitButton: "Send",
+                    submitButton: "Track my recommendation",
                     validating: "Validating...",
                     success: {
                         title: "Recommendation Sent!",
@@ -364,12 +393,14 @@ const resources = {
             },
             dashboard: {
                 title: "Track my recommendations",
+                anniversary: "20 YEARS OF EXISTENCE",
+                partnership: "Kelcom Partnership & Success",
                 form: {
                     yourEmail: "Your email",
                     contactEmail: "Contact's email",
                     message: "Message",
                     ccMention: "Kelcom will be automatically CC'd.",
-                    submit: "Send",
+                    submit: "Track my recommendation",
                     placeholder: "your@email.com"
                 },
                 track: {
@@ -378,20 +409,33 @@ const resources = {
                 table: {
                     contact: "Recommended contact",
                     status: "Status",
-                    date: "Date",
+                    date: "Recommendation date",
                     lastUpdate: "Last update",
-                    download: "Reward"
+                    download: "Download your gift",
+                    email: "Recommended contact email",
+                    update: "Last update",
+                    gift: "Reward",
+                    spin: "Spin the wheel",
+                    pending: "Pending"
                 },
                 status: {
                     title: "Recommendation Status",
                     UNKNOWN: "Sorry, we couldn't find a recommendation matching these emails.",
-                    WAITING_FOR_CONTACT: "Waiting: We are waiting for your contact to reach out following your email (first 15 days).",
+                    WAITING_FOR_CONTACT: "Validated: We are waiting for your contact to reach out following your email (first 15 days).",
                     TO_BE_QUALIFED: "To be contacted: The Kelcom team will soon contact your recommended person.",
                     FAILED_TO_CONTACT: "Failed to contact: We haven't been able to reach your contact yet.",
                     IN_CONTACT: "In contact: We are currently talking with your contact to qualify their needs.",
                     FAILED: "Not qualified: This recommendation unfortunately did not work out.",
                     OK_TO_BE_REWARDED: "Congratulations! Your recommendation is validated. You can now choose your reward.",
                     OK_REWARDED: "Reward sent: You have already claimed your reward for this recommendation. Thank you!"
+                },
+                realtime: "Updated in real-time",
+                wheel: {
+                    title: "Spin the gift wheel!",
+                    description: "You have unlocked a spin. Click the center button to discover your reward.",
+                    success: "Well done!",
+                    won: "You won:",
+                    thanks: "The entire Kelcom team thanks you! Your gift has been recorded and will be sent to you as soon as your recommended contact places their first order."
                 }
             }
         }

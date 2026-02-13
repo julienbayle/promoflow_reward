@@ -25,9 +25,16 @@ export const Footer = () => {
                         <Phone size={18} className="text-[#00767a]" />
                         <a href="tel:0240352180" className="hover:underline">02 40 35 21 80</a>
                     </div>
-                    <div className="flex items-start gap-3 text-sm">
+                    <div className="flex items-start gap-3 text-sm text-[#2A2A2A]">
                         <MapPin size={18} className="text-[#00767a] mt-1 flex-shrink-0" />
-                        <p>Bât, 1 Rue Eugène Varlin Les Dorides - Bât. 1, 44100 Nantes</p>
+                        <a
+                            href="https://www.google.com/maps/dir//KELCOM,+B%C3%A2t,+1+Rue+Eug%C3%A8ne+Varlin+Les+Dorides+-+B%C3%A2t.+1,+44100+Nantes/@47.2382332,-1.5603345,9z/data=!4m8!4m7!1m0!1m5!1m1!1s0x4805eeb1318161b1:0x989855cf349fb845!2m2!1d-1.5727564!2d47.207407?entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                        >
+                            Bât, 1 Rue Eugène Varlin Les Dorides - Bât. 1, 44100 Nantes
+                        </a>
                     </div>
                 </div>
 
