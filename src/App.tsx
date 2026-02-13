@@ -9,7 +9,7 @@ import ScrollToTop from './components/layout/ScrollToTop';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/promoflow_reward">
       <ScrollToTop />
       <div className="min-h-screen bg-background-main text-[#242424] font-sans transition-colors duration-300 relative">
         <div className="relative z-10">

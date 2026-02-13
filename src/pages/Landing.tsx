@@ -31,7 +31,7 @@ const ExplainerVideo = () => {
             <video
                 key={i18n.language}
                 ref={videoRef}
-                src={t('rewardsPage.videoSrc')}
+                src={`${import.meta.env.BASE_URL}${t('rewardsPage.videoSrc')}`}
                 className="w-full h-full object-cover"
                 controls
                 autoPlay
@@ -41,14 +41,14 @@ const ExplainerVideo = () => {
                 preload="metadata"
             >
                 <track
-                    src="subtitles_fr.vtt"
+                    src={`${import.meta.env.BASE_URL}subtitles_fr.vtt`}
                     kind="subtitles"
                     srcLang="fr"
                     label="Français"
                     default={i18n.language.startsWith('fr')}
                 />
                 <track
-                    src="subtitles_en.vtt"
+                    src={`${import.meta.env.BASE_URL}subtitles_en.vtt`}
                     kind="subtitles"
                     srcLang="en"
                     label="English"

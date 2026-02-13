@@ -32,7 +32,7 @@ export const Navbar = () => {
             }`}>
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <Link to="/" className="relative z-50">
-                    <img src="/assets/images/logo.png" alt="Kelcom" className={`${scrolled ? 'h-8' : 'h-12'} w-auto object-contain`} />
+                    <img src={`${import.meta.env.BASE_URL}assets/images/logo.png`} alt="Kelcom" className={`${scrolled ? 'h-8' : 'h-12'} w-auto object-contain`} />
                 </Link>
 
                 {/* Navigation Links and Switcher Group */}
